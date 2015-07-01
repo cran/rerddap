@@ -86,7 +86,7 @@
 #' (res <- griddap(out, time = c('2005-11-01','2006-01-01'), latitude = c(20, 21),
 #'    longitude = c(10, 11), fields = 'uo'))
 #' (res <- griddap(out, time = c('2005-11-01','2006-01-01'), latitude = c(20, 21),
-#'    longitude = c(10, 11), fields = 'uo', stride=c(1,2,1,2)))
+#'    longitude = c(10, 11), fields = 'uo', stride = c(1,2,1,2)))
 #' (res <- griddap(out, time = c('2005-11-01','2006-01-01'), latitude = c(20, 21),
 #'    longitude = c(10, 11), fields = c('uo','so')))
 #'
@@ -146,12 +146,20 @@
 #' ))
 #'
 #' # Use a different ERDDAP server url
-#' out <- info("NOAA_DHW", url = "http://oos.soest.hawaii.edu/erddap/")
+#' ## NOAA IOOS PacIOOS
+#' url = "http://oos.soest.hawaii.edu/erddap/"
+#' out <- info("NOAA_DHW", url = url)
 #' (res <- griddap(out,
 #'  time = c('2005-11-01','2006-01-01'),
 #'  latitude = c(21, 20),
 #'  longitude = c(10, 11)
 #' ))
+#' ## pass directly into griddap()
+#' griddap("NOAA_DHW", url = url,
+#'  time = c('2005-11-01','2006-01-01'),
+#'  latitude = c(21, 20),
+#'  longitude = c(10, 11)
+#' )
 #'
 #' # You don't have to pass in all of the dimensions
 #' ## They do have to be named!
@@ -159,20 +167,20 @@
 #'
 #' # Using 'last'
 #' ## with time
-#' griddap('noaa_esrl_027d_0fb5_5d38',
+#' griddap('noaa_gfdl_5081_7d4a_7570',
 #'  time = c('last-5','last'),
 #'  latitude = c(21, 18),
-#'  longitude = c(-80, -79)
+#'  longitude = c(3, 5)
 #' )
 #' ## with latitude
-#' griddap('noaa_esrl_027d_0fb5_5d38',
-#'  time = c('2012-01-01','2012-06-12'),
-#'  latitude = c('last', 'last'),
-#'  longitude = c(-80, -79)
+#' griddap('noaa_gfdl_5081_7d4a_7570',
+#'   time = c('2008-01-01','2009-01-01'),
+#'   latitude = c('last', 'last'),
+#'   longitude = c(3, 5)
 #' )
 #' ## with longitude
-#' griddap('noaa_esrl_027d_0fb5_5d38',
-#'  time = c('2012-01-01','2012-06-12'),
+#' griddap('noaa_gfdl_5081_7d4a_7570',
+#'  time = c('2008-01-01','2009-01-01'),
 #'  latitude = c(21, 18),
 #'  longitude = c('last', 'last')
 #' )
@@ -181,7 +189,7 @@
 griddap <- function(x, ..., fields = 'all', stride = 1, fmt = "nc", ncdf = "ncdf",
                     url = eurl(), store = disk(), read = TRUE, callopts = list()) {
 
-  x <- as.info(x)
+  x <- as.info(x, url)
   dimargs <- list(...)
   check_dims(dimargs, x)
   check_lat_text(dimargs)
@@ -294,14 +302,32 @@ check_lat_text <- function(dimargs) {
   }
 }
 
+is_lon_text <- function(dimargs) {
+  if (!is.null(dimargs$longitude)) {
+    any(sapply(dimargs$longitude, class) == "character")
+  } else {
+    FALSE
+  }
+}
+
+is_lat_text <- function(dimargs) {
+  if (!is.null(dimargs$latitude)) {
+    any(sapply(dimargs$latitude, class) == "character")
+  } else {
+    FALSE
+  }
+}
+
 check_lon_data_range <- function(dimargs, .info) {
   if (!is.null(dimargs$longitude)) {
     val <- .info$alldata$longitude[ .info$alldata$longitude$attribute_name == "actual_range", "value"]
     val2 <- as.numeric(strtrim(strsplit(val, ",")[[1]]))
-    if (max(dimargs$longitude) > max(val2) || min(dimargs$longitude) < min(val2)) {
-      stop(sprintf("One or both longitude values (%s) outside data range (%s)",
-                   paste0(dimargs$longitude, collapse = ", "),
-                   paste0(val2, collapse = ", ")), call. = FALSE)
+    if (!is_lon_text(dimargs)) {
+      if (max(dimargs$longitude) > max(val2) || min(dimargs$longitude) < min(val2)) {
+        stop(sprintf("One or both longitude values (%s) outside data range (%s)",
+                     paste0(dimargs$longitude, collapse = ", "),
+                     paste0(val2, collapse = ", ")), call. = FALSE)
+      }
     }
   }
 }
@@ -310,10 +336,12 @@ check_lat_data_range <- function(dimargs, .info) {
   if (!is.null(dimargs$latitude)) {
     val <- .info$alldata$latitude[ .info$alldata$latitude$attribute_name == "actual_range", "value"]
     val2 <- as.numeric(strtrim(strsplit(val, ",")[[1]]))
-    if (max(dimargs$latitude) > max(val2) || min(dimargs$latitude) < min(val2)) {
-      stop(sprintf("One or both latitude values (%s) outside data range (%s)",
-                   paste0(dimargs$latitude, collapse = ", "),
-                   paste0(val2, collapse = ", ")), call. = FALSE)
+    if (!is_lat_text(dimargs)) {
+      if (max(dimargs$latitude) > max(val2) || min(dimargs$latitude) < min(val2)) {
+        stop(sprintf("One or both latitude values (%s) outside data range (%s)",
+                     paste0(dimargs$latitude, collapse = ", "),
+                     paste0(val2, collapse = ", ")), call. = FALSE)
+      }
     }
   }
 }
@@ -414,7 +442,7 @@ erd_up_GET <- function(url, dset, args, store, fmt, ...){
       # delete file if error, and stop message
       err_handle(res, store, key)
       # return file path
-      res$request$writer[[1]]
+      res$request$output$path
     }
   } else {
     # read into memory, bypass disk storage
