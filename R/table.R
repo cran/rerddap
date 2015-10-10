@@ -32,6 +32,10 @@
 #' @param store One of \code{disk} (default) or \code{memory}. You can pass options to \code{disk}
 #' @param callopts Further args passed on to httr::GET (must be a named parameter)
 #'
+#' @return An object of class \code{tabledap}. This class is a thin wrapper around
+#' a data.frame, so the data you get back is a data.frame with metadata attached as
+#' attributes.
+#'
 #' @details
 #' For key-value pair query constraints, the valid operators are =, != (not equals), =~ (a regular
 #' expression test), <, <=, >, and >= . For regular expressions you need to add a regular
@@ -170,7 +174,9 @@ tabledap <- function(x, ..., fields=NULL, distinct=FALSE, orderby=NULL,
 print.tabledap <- function(x, ..., n = 10){
   finfo <- file_info(attr(x, "path"))
   cat(sprintf("<ERDDAP tabledap> %s", attr(x, "datasetid")), sep = "\n")
-  cat(sprintf("   Path: [%s]", attr(x, "path")), sep = "\n")
+  path <- attr(x, "path")
+  path2 <- if (file.exists(path)) path else "<beware: file deleted>"
+  cat(sprintf("   Path: [%s]", path2), sep = "\n")
   if (attr(x, "path") != "memory") {
     cat(sprintf("   Last updated: [%s]", finfo$mtime), sep = "\n")
     cat(sprintf("   File size:    [%s mb]", finfo$size), sep = "\n")

@@ -4,7 +4,7 @@ Description: General purpose R client for 'ERDDAP' servers. Includes
     functions to search for 'datasets', get summary information on
     'datasets', and fetch 'datasets', in either 'csv' or 'netCDF' format.
     'ERDDAP' information: http://upwell.pfeg.noaa.gov/erddap/information.html.
-Version: 0.2.0
+Version: 0.3.0
 License: MIT + file LICENSE
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut","cre"),
     email = "myrmecocystus@gmail.com"))
@@ -17,8 +17,8 @@ Imports: methods, utils, stats, httr, dplyr, data.table, jsonlite,
 Suggests: roxygen2, knitr, testthat, ncdf4
 Enhances: taxize
 NeedsCompilation: no
-Packaged: 2015-06-30 20:53:38 UTC; sacmac
+Packaged: 2015-10-09 16:39:04 UTC; sacmac
 Author: Scott Chamberlain [aut, cre]
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>
 Repository: CRAN
-Date/Publication: 2015-07-01 06:11:42
+Date/Publication: 2015-10-10 00:39:24

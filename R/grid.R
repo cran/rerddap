@@ -1,7 +1,5 @@
 #' Get ERDDAP griddap data.
 #'
-#' @import ncdf
-#' @importFrom xml2 xml_text xml_find_all read_html
 #' @export
 #'
 #' @param x Anything coercable to an object of class info. So the output of a call to
@@ -28,6 +26,12 @@
 #' returns a summary of the dataset - and you can read in data piecemeal later.
 #' Default: \code{TRUE}
 #' @param callopts Pass on curl options to \code{\link[httr]{GET}}
+#'
+#' @return An object of class \code{griddap_csv} if csv chosen or \code{griddap_nc}
+#' if nc file format chosen. These two classes are a thin wrapper around a data.frame,
+#' so the data you get back is a data.frame with metadata attached as
+#' attributes, along with a summary of the netcdf file (if \code{fmt="nc"}). If
+#' \code{read=FALSE}, you get back an empty data.frame.
 #'
 #' @details Details:
 #'
@@ -81,7 +85,8 @@
 #' (res <- griddap(out,
 #'  time = c('2005-11-01','2006-01-01'),
 #'  latitude = c(20, 21),
-#'  longitude = c(10, 11)
+#'  longitude = c(10, 11),
+#'  read = FALSE
 #' ))
 #' (res <- griddap(out, time = c('2005-11-01','2006-01-01'), latitude = c(20, 21),
 #'    longitude = c(10, 11), fields = 'uo'))
@@ -242,7 +247,9 @@ toggle_store <- function(fmt, store) {
 print.griddap_csv <- function(x, ..., n = 10){
   finfo <- file_info(attr(x, "path"))
   cat(sprintf("<ERDDAP griddap> %s", attr(x, "datasetid")), sep = "\n")
-  cat(sprintf("   Path: [%s]", attr(x, "path")), sep = "\n")
+  path <- attr(x, "path")
+  path2 <- if (file.exists(path)) path else "<beware: file deleted>"
+  cat(sprintf("   Path: [%s]", path2), sep = "\n")
   if (attr(x, "path") != "memory") {
     cat(sprintf("   Last updated: [%s]", finfo$mtime), sep = "\n")
     cat(sprintf("   File size:    [%s mb]", finfo$size), sep = "\n")
@@ -255,7 +262,9 @@ print.griddap_csv <- function(x, ..., n = 10){
 print.griddap_nc <- function(x, ..., n = 10){
   finfo <- file_info(attr(x, "path"))
   cat(sprintf("<ERDDAP griddap> %s", attr(x, "datasetid")), sep = "\n")
-  cat(sprintf("   Path: [%s]", attr(x, "path")), sep = "\n")
+  path <- attr(x, "path")
+  path2 <- if (file.exists(path)) path else "<beware: file deleted>"
+  cat(sprintf("   Path: [%s]", path2), sep = "\n")
   if (attr(x, "path") != "memory") {
     cat(sprintf("   Last updated: [%s]", finfo$mtime), sep = "\n")
     cat(sprintf("   File size:    [%s mb]", finfo$size), sep = "\n")
