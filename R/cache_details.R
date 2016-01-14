@@ -11,8 +11,9 @@
 #' cache_details()
 #'
 #' # List details for specific files
-#' # cache_details("243b4b41e19444515986ccf9cafbb1e9.nc")
-#' # cache_details("476ea03d8d246d81f2de02bd40524adb.csv")
+#' (x <- cache_list())
+#' cache_details(x$nc[1])
+#' cache_details(x$csv[1])
 #'
 #' # For a list or character vector of files
 #' ff <- cache_list()[[1]]
@@ -80,7 +81,8 @@ cdetails <- function(files = NULL, cache_path = "~/.rerddap") {
 file_info_ <- function(x) {
   tmp <- strsplit(x, '\\.')[[1]]
   ext <- tmp[length(tmp)]
-  fs <- file.size(x)
+  #fs <- file.size(x)
+  fs <- file.info(x)$size
   switch(ext,
      nc = {
        list(type = "netcdf",

@@ -4,7 +4,7 @@ Description: General purpose R client for 'ERDDAP' servers. Includes
     functions to search for 'datasets', get summary information on
     'datasets', and fetch 'datasets', in either 'csv' or 'netCDF' format.
     'ERDDAP' information: http://upwell.pfeg.noaa.gov/erddap/information.html.
-Version: 0.3.0
+Version: 0.3.4
 License: MIT + file LICENSE
 Authors@R: c(person("Scott", "Chamberlain", role = c("aut","cre"),
     email = "myrmecocystus@gmail.com"))
@@ -12,13 +12,14 @@ URL: https://github.com/ropensci/rerddap
 BugReports: http://www.github.com/ropensci/rerddap/issues
 LazyData: true
 VignetteBuilder: knitr
-Imports: methods, utils, stats, httr, dplyr, data.table, jsonlite,
-        xml2, digest, ncdf
-Suggests: roxygen2, knitr, testthat, ncdf4
+Imports: methods, utils, stats, httr (>= 1.0.0), dplyr, data.table,
+        jsonlite (>= 0.9.17), xml2, digest, ncdf4
+Suggests: roxygen2, knitr, testthat
 Enhances: taxize
+RoxygenNote: 5.0.1
 NeedsCompilation: no
-Packaged: 2015-10-09 16:39:04 UTC; sacmac
+Packaged: 2016-01-14 16:40:16 UTC; sacmac
 Author: Scott Chamberlain [aut, cre]
 Maintainer: Scott Chamberlain <myrmecocystus@gmail.com>
 Repository: CRAN
-Date/Publication: 2015-10-10 00:39:24
+Date/Publication: 2016-01-14 22:50:52
