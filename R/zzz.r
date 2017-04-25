@@ -20,22 +20,28 @@ long2utm <- function(lon, lat) {
 rc <- function(l) Filter(Negate(is.null), l)
 
 read_csv <- function(x){
-  tmp <- read.csv(x, header = FALSE, sep = ",", stringsAsFactors = FALSE, skip = 3)
-  nmz <- names(read.csv(x, header = TRUE, sep = ",", stringsAsFactors = FALSE, skip = 1, nrows = 1))
+  tmp <- read.csv(x, header = FALSE, sep = ",", stringsAsFactors = FALSE,
+                  skip = 3)
+  nmz <- names(read.csv(x, header = TRUE, sep = ",", stringsAsFactors = FALSE,
+                        skip = 1, nrows = 1))
   names(tmp) <- tolower(nmz)
   tmp
 }
 
 read_data <- function(x, nrows = -1){
-  if (is(x, "response")) {
+  if (inherits(x, "response")) {
     x <- content(x, "text")
-    tmp <- read.csv(text = x, header = FALSE, sep = ",", stringsAsFactors = FALSE, skip = 2, nrows = nrows)
-    nmz <- names(read.csv(text = x, header = TRUE, sep = ",", stringsAsFactors = FALSE, nrows = 1))
+    tmp <- read.csv(text = x, header = FALSE, sep = ",",
+                    stringsAsFactors = FALSE, skip = 2, nrows = nrows)
+    nmz <- names(read.csv(text = x, header = TRUE, sep = ",",
+                          stringsAsFactors = FALSE, nrows = 1))
   } else {
-    tmp <- read.csv(x, header = FALSE, sep = ",", stringsAsFactors = FALSE, skip = 2, nrows = nrows)
-    nmz <- names(read.csv(x, header = TRUE, sep = ",", stringsAsFactors = FALSE, nrows = 1))
+    tmp <- read.csv(x, header = FALSE, sep = ",", stringsAsFactors = FALSE,
+                    skip = 2, nrows = nrows)
+    nmz <- names(read.csv(x, header = TRUE, sep = ",",
+                          stringsAsFactors = FALSE, nrows = 1))
   }
-  setNames(tmp, tolower(nmz))
+  stats::setNames(tmp, tolower(nmz))
 }
 
 read_all <- function(x, fmt, read) {
@@ -58,7 +64,7 @@ read_all <- function(x, fmt, read) {
 }
 
 read_table <- function(x){
-  if (is(x, "response")) {
+  if (inherits(x, "response")) {
     txt <- gsub('\n$', '', content(x, "text"))
     read.csv(text = txt, sep = ",", stringsAsFactors = FALSE,
              blank.lines.skip = FALSE)[-1, , drop = FALSE]
@@ -107,4 +113,10 @@ erdddap_GET <- function(url, args = NULL, ...) {
   stopifnot(tt$headers$`content-type` == 'application/json;charset=UTF-8')
   out <- content(tt, as = "text")
   jsonlite::fromJSON(out, FALSE)
+}
+
+url_build <- function(url, args = NULL) {
+  url <- httr::parse_url(url)
+  if (!is.null(args)) url$query <- args
+  httr::build_url(url)
 }

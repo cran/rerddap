@@ -11,7 +11,8 @@ convert_units(udunits = NULL, ucum = NULL,
 \item{udunits}{character; A UDUNITS character string
 \url{http://www.unidata.ucar.edu/software/udunits/}}
 
-\item{ucum}{character; A UCUM character string \url{http://unitsofmeasure.org/ucum.html}}
+\item{ucum}{character; A UCUM character string
+\url{http://unitsofmeasure.org/ucum.html}}
 
 \item{url}{Base URL of the ERDDAP server}
 
@@ -26,4 +27,3 @@ convert_units(udunits = "degree_C meter-1")
 convert_units(ucum = "Cel.m-1")
 }
 }
-

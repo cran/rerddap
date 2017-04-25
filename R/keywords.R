@@ -2,16 +2,18 @@
 #'
 #' @export
 #' @param cf character; A cf standard name
-#' \url{http://cfconventions.org/Data/cf-standard-names/27/build/cf-standard-name-table.html}
+#' http://cfconventions.org/Data/cf-standard-names/27/build/cf-standard-name-table.html
 #' @param gcmd character; A GCMD science keyword
-#' \url{http://gcmd.gsfc.nasa.gov/learn/keyword_list.html}
-#' @param url A URL for an ERDDAP server. Default: \url{http://upwell.pfeg.noaa.gov/erddap/}
+#' http://gcmd.gsfc.nasa.gov/learn/keyword_list.html
+#' @param url A URL for an ERDDAP server. Default:
+#' https://upwell.pfeg.noaa.gov/erddap/
 #' @param ... Curl args passed on to \code{\link[httr]{GET}}
 #' @examples  \dontrun{
 #' key_words(cf = "air_pressure")
 #' cat(key_words(cf = "air_pressure"))
 #' key_words(gcmd = "Atmosphere > Atmospheric Pressure > Sea Level Pressure")
-#' cat(key_words(gcmd = "Atmosphere > Atmospheric Pressure > Sea Level Pressure"))
+#' cat(
+#' key_words(gcmd = "Atmosphere > Atmospheric Pressure > Sea Level Pressure"))
 #'
 #' # a different ERDDAP server
 #' key_words(cf = "air_pressure", url = servers()$url[5])

@@ -3,7 +3,7 @@
 #' @export
 #' @param x File names
 #' @param cache_path path to cached files
-#' @references \url{http://upwell.pfeg.noaa.gov/erddap/index.html}
+#' @references \url{https://upwell.pfeg.noaa.gov/erddap/index.html}
 #' @author Scott Chamberlain <myrmecocystus@@gmail.com>
 #' @seealso \code{\link{cache_list}}, \code{\link{cache_delete}}
 #' @examples \dontrun{
@@ -22,7 +22,7 @@
 #'
 #' # List details from output of griddap or tabledap
 #' ## tabledap
-#' (table_res <- tabledap('erdCalCOFIfshsiz'))
+#' (table_res <- tabledap('erdCinpKfmBT'))
 #' cache_details(table_res)
 #'
 #' ## griddap
@@ -93,7 +93,8 @@ file_info_ <- function(x) {
      csv = {
        list(type = "csv",
             size = if (!is.na(fs)) getsize(fs) else NA,
-            info = if (!is.na(fs)) names(read.csv(x, nrows = 1, stringsAsFactors = FALSE)) else NA
+            info = if (!is.na(fs))
+              names(read.csv(x, nrows = 1, stringsAsFactors = FALSE)) else NA
        )
      }
   )

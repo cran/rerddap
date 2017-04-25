@@ -31,7 +31,7 @@ cache_details(as.list(ff[1:3]))
 
 # List details from output of griddap or tabledap
 ## tabledap
-(table_res <- tabledap('erdCalCOFIfshsiz'))
+(table_res <- tabledap('erdCinpKfmBT'))
 cache_details(table_res)
 
 ## griddap
@@ -43,13 +43,12 @@ cache_details(table_res)
 cache_details(grid_res)
 }
 }
-\author{
-Scott Chamberlain <myrmecocystus@gmail.com>
-}
 \references{
-\url{http://upwell.pfeg.noaa.gov/erddap/index.html}
+\url{https://upwell.pfeg.noaa.gov/erddap/index.html}
 }
 \seealso{
 \code{\link{cache_list}}, \code{\link{cache_delete}}
 }
-
+\author{
+Scott Chamberlain <myrmecocystus@gmail.com>
+}

@@ -7,7 +7,8 @@
 version(url = eurl(), ...)
 }
 \arguments{
-\item{url}{A URL for an ERDDAP server. Default: \url{http://upwell.pfeg.noaa.gov/erddap/}}
+\item{url}{A URL for an ERDDAP server. Default:
+\url{https://upwell.pfeg.noaa.gov/erddap/}}
 
 \item{...}{Curl args passed on to \code{\link[httr]{GET}}}
 }
@@ -23,4 +24,3 @@ version(ss$url[2])
 version(ss$url[3])
 }
 }
-

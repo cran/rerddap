@@ -1,6 +1,7 @@
 # get metadata and data -----------------------
 ncdf4_get <- function(file){
   nc <- ncdf4::nc_open(file)
+  on.exit(ncdf4::nc_close(nc))
   tmp <- unclass(nc)
 
   dims <- names(nc$dim)
@@ -16,12 +17,24 @@ ncdf4_get <- function(file){
   }
   df <- do.call("cbind.data.frame", outvars)
   rows <- length(outvars[[1]])
-  time <- rep(out$time, each = rows/length(out$time))
-  lat <- rep(rep(out$latitude, each = length(out$longitude)), length(out$time))
-  lon <- rep(rep(out$longitude, times = length(out$latitude)), times = length(out$time))
-  meta <- data.frame(time, lat, lon, stringsAsFactors = FALSE)
-  alldf <- cbind(meta, df)
-  on.exit(ncdf4::nc_close(nc))
+
+  if (length(out$time) == 0) {
+    out$time <- NULL
+    exout <- do.call("expand.grid", out)
+    meta <- dplyr::arrange_(exout, names(exout)[1])
+  } else {
+    time <- suppressWarnings(rep(out$time, each = rows/length(out$time)))
+    lat <- rep(rep(out$latitude, each = length(out$longitude)),
+               length(out$time))
+    lon <- rep(rep(out$longitude, times = length(out$latitude)),
+               times = length(out$time))
+    meta <- data.frame(time, lat, lon, stringsAsFactors = FALSE)
+  }
+
+  # make data.frame
+  alldf <- if (NROW(meta) > 0) cbind(meta, df) else df
+
+  # output
   list(summary = tmp, data = alldf)
 }
 
