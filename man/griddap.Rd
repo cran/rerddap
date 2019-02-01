@@ -4,8 +4,8 @@
 \alias{griddap}
 \title{Get ERDDAP gridded data}
 \usage{
-griddap(x, ..., fields = "all", stride = 1, fmt = "nc", url = eurl(),
-  store = disk(), read = TRUE, callopts = list())
+griddap(x, ..., fields = "all", stride = 1, fmt = "nc",
+  url = eurl(), store = disk(), read = TRUE, callopts = list())
 }
 \arguments{
 \item{x}{Anything coercable to an object of class info. So the output of a
@@ -25,10 +25,12 @@ every other value, etc. Default: 1 (i.e., get every value)}
 \item{fmt}{(character) One of csv or nc (for netcdf). Default: nc}
 
 \item{url}{A URL for an ERDDAP server. Default:
-\url{http://upwell.pfeg.noaa.gov/erddap/}}
+\url{https://upwell.pfeg.noaa.gov/erddap/}. See \code{\link[=eurl]{eurl()}} for
+more information}
 
 \item{store}{One of \code{\link{disk}} (default) or \code{\link{memory}}. You
-can pass options to \code{\link{disk}}}
+can pass options to \code{\link{disk}}. Beware: if you choose \code{fmt="nc"},
+we force \code{store=disk()} because nc files have to be written to disk.}
 
 \item{read}{(logical) Read data into memory or not. Does not apply when
 \code{store} parameter is set to memory (which reads data into memory).
@@ -36,7 +38,7 @@ For large csv, or especially netcdf files, you may want to set this to
 \code{FALSE}, which simply returns a summary of the dataset - and you can
 read in data piecemeal later. Default: \code{TRUE}}
 
-\item{callopts}{Pass on curl options to \code{\link[httr]{GET}}}
+\item{callopts}{Curl options passed on to \code{\link[crul]{HttpClient}}}
 }
 \value{
 An object of class \code{griddap_csv} if csv chosen or
@@ -94,21 +96,27 @@ function calls. \code{\link{memory}} does not accept any inputs, while
 \dQuote{sql} for storing in a SQL database.
 }
 
+\section{Non-lat/lon grid data}{
+
+Some gridded datasets have latitude/longitude components, but some do not.
+When nc format gridded datasets have latitude and longitude we "melt" them into a
+data.frame for easy downstream consumption. When nc format gridded datasets do
+not have latitude and longitude components, we do not read in the data, throw
+a warning saying so. You can readin the nc file yourself with the file path.
+CSV format is not affected by this issue as CSV data is easily turned into
+a data.frame regardless of whether latitude/longitude data are present.
+}
+
 \examples{
 \dontrun{
 # single variable dataset
 ## You can pass in the outpu of a call to info
-(out <- info('noaa_esrl_027d_0fb5_5d38'))
-(res <- griddap(out,
- time = c('2012-01-01','2012-06-12'),
- latitude = c(21, 18),
- longitude = c(-80, -75)
-))
+(out <- info('erdVHNchlamday'))
 ## Or, pass in a dataset id
-(res <- griddap('noaa_esrl_027d_0fb5_5d38',
- time = c('2012-01-01','2012-06-12'),
- latitude = c(21, 18),
- longitude = c(-80, -75)
+(res <- griddap('erdVHNchlamday',
+ time = c('2015-04-01','2015-04-10'),
+ latitude = c(18, 21),
+ longitude = c(-120, -119)
 ))
 
 # multi-variable dataset
@@ -127,12 +135,6 @@ function calls. \code{\link{memory}} does not accept any inputs, while
    latitude = c(24, 23), longitude = c(88, 90),
    fields = c('mod_current','u_current')))
 
-(out <- info('noaa_esrl_4965_b6d4_7198'))
-(res <- griddap(out,
- time = c('1990-10-01', '1991-02-01'),
- latitude = c(20, 21),
- longitude = c(2, 5)
-))
 
 # Write to memory (within R), or to disk
 (out <- info('erdQSwindmday'))
@@ -156,12 +158,12 @@ system.time( griddap(out,
  store = disk()
 ) )
 
-## memory
+## memory - you have to choose fmt="csv" if you use memory
 (res <- griddap("erdMBchla1day",
  time = c('2015-01-01','2015-01-03'),
  latitude = c(14, 15),
  longitude = c(125, 126),
- store = memory()
+ fmt = "csv", store = memory()
 ))
 
 ## Use ncdf4 package to parse data
@@ -184,47 +186,55 @@ info("erdMBchla1day")
 # Use a different ERDDAP server url
 ## NOAA IOOS PacIOOS
 url = "http://oos.soest.hawaii.edu/erddap/"
-out <- info("NOAA_DHW", url = url)
+out <- info("NOAA_DHW_5km", url = url)
 (res <- griddap(out,
- time = c('2005-11-01','2006-01-01'),
+ time = c('2015-11-01','2015-11-03'),
  latitude = c(21, 20),
  longitude = c(10, 11)
 ))
 ## pass directly into griddap()
-griddap("NOAA_DHW", url = url,
- time = c('2005-11-01','2006-01-01'),
+griddap("NOAA_DHW_5km", url = url,
+ time = c('2015-11-01','2015-11-03'),
  latitude = c(21, 20),
  longitude = c(10, 11)
 )
 
-# You don't have to pass in all of the dimensions
-## They do have to be named!
-griddap(out, time = c('2005-11-01','2005-11-03'))
-
 # Using 'last'
 ## with time
-griddap('noaa_esrl_fce0_4aad_340a',
+griddap('erdVHNchlamday',
  time = c('last-5','last'),
- latitude = c(21, 18),
- longitude = c(3, 5)
+ latitude = c(18, 21),
+ longitude = c(-120, -119)
 )
 ## with latitude
-griddap('noaa_esrl_fce0_4aad_340a',
-  time = c('2008-01-01','2009-01-01'),
+griddap('erdVHNchlamday',
+  time = c('2015-04-01','2015-04-10'),
   latitude = c('last', 'last'),
-  longitude = c(3, 5)
+  longitude = c(-120, -119)
 )
 ## with longitude
-griddap('noaa_esrl_fce0_4aad_340a',
- time = c('2008-01-01','2009-01-01'),
- latitude = c(21, 18),
- longitude = c('last', 'last')
+griddap('erdVHNchlamday',
+  time = c('2015-04-01','2015-04-10'),
+  latitude = c(18, 21),
+  longitude = c('last', 'last')
 )
+
+# datasets without lat/lon grid and with fmt=nc
+(x <- info('glos_tds_5912_ca66_3f41'))
+res <- griddap(x,
+  time = c('2018-04-01','2018-04-10'),
+  ny = c(1, 2),
+  nx = c(3, 5)
+)
+## data.frame is empty
+res$data
+## read in from the nc file path
+ncdf4::nc_open(res$summary$filename)
 }
 }
 \references{
-\url{http://upwell.pfeg.noaa.gov/erddap/rest.html}
+https://upwell.pfeg.noaa.gov/erddap/rest.html
 }
 \author{
-Scott Chamberlain <myrmecocystus@gmail.com>
+Scott Chamberlain \href{mailto:myrmecocystus@gmail.com}{myrmecocystus@gmail.com}
 }

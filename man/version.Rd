@@ -8,9 +8,10 @@ version(url = eurl(), ...)
 }
 \arguments{
 \item{url}{A URL for an ERDDAP server. Default:
-\url{https://upwell.pfeg.noaa.gov/erddap/}}
+\url{https://upwell.pfeg.noaa.gov/erddap/}. See \code{\link[=eurl]{eurl()}} for
+more information}
 
-\item{...}{Curl args passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \description{
 Get ERDDAP version
@@ -19,7 +20,6 @@ Get ERDDAP version
 \dontrun{
 version()
 ss <- servers()
-version(ss$url[1])
 version(ss$url[2])
 version(ss$url[3])
 }

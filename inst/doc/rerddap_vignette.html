@@ -245,37 +245,35 @@ hr {
 <p>First, you likely want to search for data, specify either <code>griddadp</code> or <code>tabledap</code></p>
 
 <pre><code class="r">ed_search(query = &#39;size&#39;, which = &quot;table&quot;)
-#&gt; # A tibble: 10 x 2
-#&gt;                                                                          title
-#&gt;                                                                          &lt;chr&gt;
-#&gt;  1                                                        CalCOFI Larvae Sizes
-#&gt;  2 Channel Islands, Kelp Forest Monitoring, Size and Frequency, Natural Habita
-#&gt;  3                          GLOBEC NEP MOCNESS Plankton (MOC1) Data, 2000-2002
-#&gt;  4                      GLOBEC NEP Vertical Plankton Tow (VPT) Data, 1997-2001
-#&gt;  5                                         CalCOFI Larvae Counts Positive Tows
-#&gt;  6                                                                CalCOFI Tows
-#&gt;  7                                  OBIS - ARGOS Satellite Tracking of Animals
-#&gt;  8             NWFSC Observer Fixed Gear Data, off West Coast of US, 2002-2006
-#&gt;  9                  NWFSC Observer Trawl Data, off West Coast of US, 2002-2006
-#&gt; 10 AN EXPERIMENTAL DATASET: Underway Sea Surface Temperature and Salinity Aboa
-#&gt; # ... with 1 more variables: dataset_id &lt;chr&gt;
+#&gt; # A tibble: 9 x 2
+#&gt;   title                                                    dataset_id      
+#&gt;   &lt;chr&gt;                                                    &lt;chr&gt;           
+#&gt; 1 CalCOFI Larvae Sizes                                     erdCalCOFIlrvsiz
+#&gt; 2 Channel Islands, Kelp Forest Monitoring, Size and Frequ… erdCinpKfmSFNH  
+#&gt; 3 CalCOFI Larvae Counts Positive Tows                      erdCalCOFIlrvcn…
+#&gt; 4 CalCOFI Tows                                             erdCalCOFItows  
+#&gt; 5 NWFSC Observer Fixed Gear Data, off West Coast of US, 2… nwioosObsFixed2…
+#&gt; 6 NWFSC Observer Trawl Data, off West Coast of US, 2002-2… nwioosObsTrawl2…
+#&gt; 7 GLOBEC NEP MOCNESS Plankton (MOC1) Data, 2000-2002       erdGlobecMoc1   
+#&gt; 8 GLOBEC NEP Vertical Plankton Tow (VPT) Data, 1997-2001   erdGlobecVpt    
+#&gt; 9 AN EXPERIMENTAL DATASET: Underway Sea Surface Temperatu… nodcPJJU
 </code></pre>
 
 <pre><code class="r">ed_search(query = &#39;size&#39;, which = &quot;grid&quot;)
-#&gt; # A tibble: 347 x 2
-#&gt;                                                                          title
-#&gt;                                                                          &lt;chr&gt;
-#&gt;  1 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0001) [time][
-#&gt;  2 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0001) [time][
-#&gt;  3 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0001) [time][
-#&gt;  4 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0001) [time][
-#&gt;  5 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0001) [time][
-#&gt;  6 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0002) [time][
-#&gt;  7 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0002) [time][
-#&gt;  8 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0002) [time][
-#&gt;  9 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0002) [time][
-#&gt; 10 ROMS3.0 CBLAST2007 Ripples with SWAN-40m res (his case7 ar0fd 0002) [time][
-#&gt; # ... with 337 more rows, and 1 more variables: dataset_id &lt;chr&gt;
+#&gt; # A tibble: 11 x 2
+#&gt;    title                                              dataset_id           
+#&gt;    &lt;chr&gt;                                              &lt;chr&gt;                
+#&gt;  1 Extended AVHRR Polar Pathfinder Fundamental Clima… noaa_ngdc_da08_dcdf_…
+#&gt;  2 Extended AVHRR Polar Pathfinder Fundamental Clima… noaa_ngdc_0fe5_a4b9_…
+#&gt;  3 Extended AVHRR Polar Pathfinder Fundamental Clima… noaa_ngdc_5253_bf9e_…
+#&gt;  4 Extended AVHRR Polar Pathfinder Fundamental Clima… noaa_ngdc_0f24_2f8c_…
+#&gt;  5 Archived Suite of NOAA Coral Reef Watch Operation… noaa_nodc_9f8b_ab7e_…
+#&gt;  6 Archived Suite of NOAA Coral Reef Watch Operation… noaa_nodc_da4e_3fc9_…
+#&gt;  7 USGS COAWST Forecast, US East Coast and Gulf of M… whoi_geoport_62d0_9d…
+#&gt;  8 USGS COAWST Forecast, US East Coast and Gulf of M… whoi_geoport_7dd7_db…
+#&gt;  9 USGS COAWST Forecast, US East Coast and Gulf of M… whoi_geoport_a4fb_2c…
+#&gt; 10 USGS COAWST Forecast, US East Coast and Gulf of M… whoi_geoport_ed12_89…
+#&gt; 11 USGS COAWST Forecast, US East Coast and Gulf of M… whoi_geoport_61c3_0b…
 </code></pre>
 
 <h2>Information</h2>
@@ -290,9 +288,9 @@ hr {
 #&gt;      common_name: 
 #&gt;      cruise: 
 #&gt;      itis_tsn: 
-#&gt;      larvae_1000m3: 
-#&gt;          Units: Fish larvae per 1,000 cubic meters of water sampled 
 #&gt;      larvae_10m2: 
+#&gt;          Units: Fish larvae per ten meters squared of water sampled 
+#&gt;      larvae_count: 
 ...
 </code></pre>
 
@@ -300,61 +298,54 @@ hr {
 
 <p>First, get information on a dataset to see time range, lat/long range, and variables.</p>
 
-<pre><code class="r">(out &lt;- info(&#39;noaa_esrl_027d_0fb5_5d38&#39;))
-#&gt; &lt;ERDDAP info&gt; noaa_esrl_027d_0fb5_5d38 
+<pre><code class="r">(out &lt;- info(&#39;erdMBchla1day&#39;))
+#&gt; &lt;ERDDAP info&gt; erdMBchla1day 
 #&gt;  Dimensions (range):  
-#&gt;      time: (1850-01-01T00:00:00Z, 2014-05-01T00:00:00Z) 
-#&gt;      latitude: (87.5, -87.5) 
-#&gt;      longitude: (-177.5, 177.5) 
+#&gt;      time: (2006-01-01T12:00:00Z, 2019-01-30T12:00:00Z) 
+#&gt;      altitude: (0.0, 0.0) 
+#&gt;      latitude: (-45.0, 65.0) 
+#&gt;      longitude: (120.0, 320.0) 
 #&gt;  Variables:  
-#&gt;      air: 
-#&gt;          Range: -20.9, 19.5 
-#&gt;          Units: degC
+#&gt;      chlorophyll: 
+#&gt;          Units: mg m-3
 </code></pre>
 
 <p>Then query for gridded data using the <code>griddap()</code> function</p>
 
 <pre><code class="r">(res &lt;- griddap(out,
-  time = c(&#39;2012-01-01&#39;, &#39;2012-01-30&#39;),
-  latitude = c(21, 10),
-  longitude = c(-80, -70)
+  time = c(&#39;2015-01-01&#39;,&#39;2015-01-03&#39;),
+  latitude = c(14, 15),
+  longitude = c(125, 126)
 ))
-#&gt; &lt;ERDDAP griddap&gt; noaa_esrl_027d_0fb5_5d38
-#&gt;    Path: [/Users/sacmac/Library/Caches/R/rerddap/1a664ce4d6af316b611ac5a74a68d704.nc]
-#&gt;    Last updated: [2017-05-11 09:00:03]
-#&gt;    File size:    [0 mb]
-#&gt;    Dimensions (dims/vars):   [3 X 1]
-#&gt;    Dim names: time, latitude, longitude
-#&gt;    Variable names: CRUTEM3: Surface Air Temperature Monthly Anomaly
-#&gt;    data.frame (rows/columns):   [18 X 4]
-#&gt; # A tibble: 18 x 4
-#&gt;                    time   lat   lon   air
-#&gt;                   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt;  1 2012-01-01T00:00:00Z  22.5 -77.5    NA
-#&gt;  2 2012-01-01T00:00:00Z  22.5 -72.5    NA
-#&gt;  3 2012-01-01T00:00:00Z  22.5 -67.5    NA
-#&gt;  4 2012-01-01T00:00:00Z  17.5 -77.5 -0.10
-#&gt;  5 2012-01-01T00:00:00Z  17.5 -72.5    NA
-#&gt;  6 2012-01-01T00:00:00Z  17.5 -67.5 -0.20
-#&gt;  7 2012-01-01T00:00:00Z  12.5 -77.5  0.20
-#&gt;  8 2012-01-01T00:00:00Z  12.5 -72.5    NA
-#&gt;  9 2012-01-01T00:00:00Z  12.5 -67.5  0.30
-#&gt; 10 2012-02-01T00:00:00Z  22.5 -77.5    NA
-#&gt; 11 2012-02-01T00:00:00Z  22.5 -72.5    NA
-#&gt; 12 2012-02-01T00:00:00Z  22.5 -67.5    NA
-#&gt; 13 2012-02-01T00:00:00Z  17.5 -77.5  0.40
-#&gt; 14 2012-02-01T00:00:00Z  17.5 -72.5    NA
-#&gt; 15 2012-02-01T00:00:00Z  17.5 -67.5  0.20
-#&gt; 16 2012-02-01T00:00:00Z  12.5 -77.5  0.00
-#&gt; 17 2012-02-01T00:00:00Z  12.5 -72.5    NA
-#&gt; 18 2012-02-01T00:00:00Z  12.5 -67.5  0.32
+#&gt; &lt;ERDDAP griddap&gt; erdMBchla1day
+#&gt;    Path: [/Users/sckott/Library/Caches/R/rerddap/4d844aa48552049c3717ac94ced5f9b8.nc]
+#&gt;    Last updated: [2019-01-31 13:39:37]
+#&gt;    File size:    [0.03 mb]
+#&gt;    Dimensions (dims/vars):   [4 X 1]
+#&gt;    Dim names: time, altitude, latitude, longitude
+#&gt;    Variable names: Chlorophyll Concentration in Sea Water
+#&gt;    data.frame (rows/columns):   [5043 X 4]
+#&gt; # A tibble: 5,043 x 4
+#&gt;    time                   lat   lon chlorophyll
+#&gt;    &lt;chr&gt;                &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;
+#&gt;  1 2015-01-01T12:00:00Z    14  125           NA
+#&gt;  2 2015-01-01T12:00:00Z    14  125.          NA
+#&gt;  3 2015-01-01T12:00:00Z    14  125.          NA
+#&gt;  4 2015-01-01T12:00:00Z    14  125.          NA
+#&gt;  5 2015-01-01T12:00:00Z    14  125.          NA
+#&gt;  6 2015-01-01T12:00:00Z    14  125.          NA
+#&gt;  7 2015-01-01T12:00:00Z    14  125.          NA
+#&gt;  8 2015-01-01T12:00:00Z    14  125.          NA
+#&gt;  9 2015-01-01T12:00:00Z    14  125.          NA
+#&gt; 10 2015-01-01T12:00:00Z    14  125.          NA
+#&gt; # … with 5,033 more rows
 </code></pre>
 
 <p>The output of <code>griddap()</code> is a list that you can explore further. Get the summary</p>
 
 <pre><code class="r">res$summary
 #&gt; $filename
-#&gt; [1] &quot;/Users/sacmac/Library/Caches/R/rerddap/1a664ce4d6af316b611ac5a74a68d704.nc&quot;
+#&gt; [1] &quot;/Users/sckott/Library/Caches/R/rerddap/4d844aa48552049c3717ac94ced5f9b8.nc&quot;
 #&gt; 
 #&gt; $writable
 #&gt; [1] FALSE
@@ -374,31 +365,19 @@ hr {
 <p>Get the dimension variables</p>
 
 <pre><code class="r">names(res$summary$dim)
-#&gt; [1] &quot;time&quot;      &quot;latitude&quot;  &quot;longitude&quot;
+#&gt; [1] &quot;time&quot;      &quot;altitude&quot;  &quot;latitude&quot;  &quot;longitude&quot;
 </code></pre>
 
 <p>Get the data.frame (beware: you may want to just look at the <code>head</code> of the data.frame if large)</p>
 
-<pre><code class="r">res$data
-#&gt;                    time  lat   lon   air
-#&gt; 1  2012-01-01T00:00:00Z 22.5 -77.5    NA
-#&gt; 2  2012-01-01T00:00:00Z 22.5 -72.5    NA
-#&gt; 3  2012-01-01T00:00:00Z 22.5 -67.5    NA
-#&gt; 4  2012-01-01T00:00:00Z 17.5 -77.5 -0.10
-#&gt; 5  2012-01-01T00:00:00Z 17.5 -72.5    NA
-#&gt; 6  2012-01-01T00:00:00Z 17.5 -67.5 -0.20
-#&gt; 7  2012-01-01T00:00:00Z 12.5 -77.5  0.20
-#&gt; 8  2012-01-01T00:00:00Z 12.5 -72.5    NA
-#&gt; 9  2012-01-01T00:00:00Z 12.5 -67.5  0.30
-#&gt; 10 2012-02-01T00:00:00Z 22.5 -77.5    NA
-#&gt; 11 2012-02-01T00:00:00Z 22.5 -72.5    NA
-#&gt; 12 2012-02-01T00:00:00Z 22.5 -67.5    NA
-#&gt; 13 2012-02-01T00:00:00Z 17.5 -77.5  0.40
-#&gt; 14 2012-02-01T00:00:00Z 17.5 -72.5    NA
-#&gt; 15 2012-02-01T00:00:00Z 17.5 -67.5  0.20
-#&gt; 16 2012-02-01T00:00:00Z 12.5 -77.5  0.00
-#&gt; 17 2012-02-01T00:00:00Z 12.5 -72.5    NA
-#&gt; 18 2012-02-01T00:00:00Z 12.5 -67.5  0.32
+<pre><code class="r">head(res$data)
+#&gt;                   time lat     lon chlorophyll
+#&gt; 1 2015-01-01T12:00:00Z  14 125.000          NA
+#&gt; 2 2015-01-01T12:00:00Z  14 125.025          NA
+#&gt; 3 2015-01-01T12:00:00Z  14 125.050          NA
+#&gt; 4 2015-01-01T12:00:00Z  14 125.075          NA
+#&gt; 5 2015-01-01T12:00:00Z  14 125.100          NA
+#&gt; 6 2015-01-01T12:00:00Z  14 125.125          NA
 </code></pre>
 
 <h2>tabledap (tabular) data</h2>
@@ -411,32 +390,32 @@ hr {
 #&gt;      common_name: 
 #&gt;      cruise: 
 #&gt;      itis_tsn: 
-#&gt;      larvae_1000m3: 
-#&gt;          Units: Fish larvae per 1,000 cubic meters of water sampled 
 #&gt;      larvae_10m2: 
+#&gt;          Units: Fish larvae per ten meters squared of water sampled 
+#&gt;      larvae_count: 
 ...
 </code></pre>
 
 <pre><code class="r">(dat &lt;- tabledap(&#39;erdCalCOFIlrvsiz&#39;, fields=c(&#39;latitude&#39;,&#39;longitude&#39;,&#39;larvae_size&#39;,
   &#39;scientific_name&#39;), &#39;time&gt;=2011-01-01&#39;, &#39;time&lt;=2011-12-31&#39;))
 #&gt; &lt;ERDDAP tabledap&gt; erdCalCOFIlrvsiz
-#&gt;    Path: [/Users/sacmac/Library/Caches/R/rerddap/db7389db5b5b0ed9c426d5c13bc43d18.csv]
-#&gt;    Last updated: [2017-05-11 09:04:58]
-#&gt;    File size:    [0.05 mb]
-#&gt; # A tibble: 1,217 x 4
-#&gt;     latitude longitude larvae_size        scientific_name
-#&gt;  *     &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;                  &lt;chr&gt;
-#&gt;  1 32.956665  -117.305         4.5       Engraulis mordax
-#&gt;  2 32.956665  -117.305         2.9 Doryteuthis opalescens
-#&gt;  3 32.956665  -117.305         2.7 Doryteuthis opalescens
-#&gt;  4 32.956665  -117.305         3.3 Doryteuthis opalescens
-#&gt;  5 32.956665  -117.305         3.0 Doryteuthis opalescens
-#&gt;  6 32.956665  -117.305         3.7 Doryteuthis opalescens
-#&gt;  7 32.956665  -117.305         3.4 Doryteuthis opalescens
-#&gt;  8 32.956665  -117.305         3.2 Doryteuthis opalescens
-#&gt;  9 32.956665  -117.305         2.8 Doryteuthis opalescens
-#&gt; 10 32.956665  -117.305         3.6 Doryteuthis opalescens
-#&gt; # ... with 1,207 more rows
+#&gt;    Path: [/Users/sckott/Library/Caches/R/rerddap/db7389db5b5b0ed9c426d5c13bc43d18.csv]
+#&gt;    Last updated: [2019-01-31 13:40:29]
+#&gt;    File size:    [0.07 mb]
+#&gt; # A tibble: 1,725 x 4
+#&gt;    latitude  longitude larvae_size scientific_name       
+#&gt;    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;       &lt;chr&gt;                 
+#&gt;  1 32.956665 -117.305  2.8         Doryteuthis opalescens
+#&gt;  2 32.956665 -117.305  3.4         Doryteuthis opalescens
+#&gt;  3 32.956665 -117.305  3.6         Doryteuthis opalescens
+#&gt;  4 32.956665 -117.305  3.1         Doryteuthis opalescens
+#&gt;  5 32.956665 -117.305  3.3         Doryteuthis opalescens
+#&gt;  6 32.956665 -117.305  3.7         Doryteuthis opalescens
+#&gt;  7 32.956665 -117.305  3.9         Doryteuthis opalescens
+#&gt;  8 32.956665 -117.305  2.7         Doryteuthis opalescens
+#&gt;  9 32.956665 -117.305  4.1         Doryteuthis opalescens
+#&gt; 10 32.956665 -117.305  2.8         Doryteuthis opalescens
+#&gt; # … with 1,715 more rows
 </code></pre>
 
 <p>Since both <code>griddap()</code> and <code>tabledap()</code> give back data.frame&#39;s, it&#39;s easy to do downstream manipulation. For example, we can use <code>dplyr</code> to filter, summarize, group, and sort:</p>
@@ -447,15 +426,17 @@ dat %&gt;%
   group_by(scientific_name) %&gt;%
   summarise(mean_size = mean(larvae_size)) %&gt;%
   arrange(desc(mean_size))
-#&gt; # A tibble: 6 x 2
-#&gt;          scientific_name mean_size
-#&gt;                    &lt;chr&gt;     &lt;dbl&gt;
-#&gt; 1       Engraulis mordax  8.446067
-#&gt; 2        Sardinops sagax  5.828738
-#&gt; 3   Merluccius productus  5.512176
-#&gt; 4 Doryteuthis opalescens  3.653363
-#&gt; 5      Scomber japonicus  3.400000
-#&gt; 6  Trachurus symmetricus  3.264444
+#&gt; # A tibble: 8 x 2
+#&gt;   scientific_name        mean_size
+#&gt;   &lt;chr&gt;                      &lt;dbl&gt;
+#&gt; 1 Anoplopoma fimbria         23.3 
+#&gt; 2 Engraulis mordax            9.26
+#&gt; 3 Sardinops sagax             7.29
+#&gt; 4 Merluccius productus        5.48
+#&gt; 5 Tactostoma macropus         5   
+#&gt; 6 Doryteuthis opalescens      3.67
+#&gt; 7 Scomber japonicus           3.4 
+#&gt; 8 Trachurus symmetricus       3.29
 </code></pre>
 
 </body>

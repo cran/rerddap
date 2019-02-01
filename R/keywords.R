@@ -6,14 +6,12 @@
 #' @param gcmd character; A GCMD science keyword
 #' http://gcmd.gsfc.nasa.gov/learn/keyword_list.html
 #' @param url A URL for an ERDDAP server. Default:
-#' https://upwell.pfeg.noaa.gov/erddap/
-#' @param ... Curl args passed on to \code{\link[httr]{GET}}
+#' https://upwell.pfeg.noaa.gov/erddap/. See [eurl()] for 
+#' more information
+#' @param ... Curl options passed on to [crul::HttpClient]
 #' @examples  \dontrun{
 #' key_words(cf = "air_pressure")
 #' cat(key_words(cf = "air_pressure"))
-#' key_words(gcmd = "Atmosphere > Atmospheric Pressure > Sea Level Pressure")
-#' cat(
-#' key_words(gcmd = "Atmosphere > Atmospheric Pressure > Sea Level Pressure"))
 #'
 #' # a different ERDDAP server
 #' # key_words(cf = "air_pressure", url = servers()$url[6])
@@ -22,9 +20,11 @@
 key_words <- function(cf = NULL, gcmd = NULL, url = eurl(), ...){
   either_or_keywords(cf, gcmd)
   args <- rc(list(cf = cf, gcmd = gcmd))
-  res <- GET(paste0(pu(url), '/convert/keywords.txt'), query = args, ...)
-  stop_for_status(res)
-  content(res, "text")
+  cli <- crul::HttpClient$new(url = file.path(pu(url), 'convert/keywords.txt'), 
+    opts = list(...))
+  res <- cli$get(query = args)
+  res$raise_for_status()
+  res$parse("UTF-8")
 }
 
 either_or_keywords <- function(cf, gcmd) {

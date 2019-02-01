@@ -23,7 +23,7 @@ servers <- function() {
     c("NOAA IOOS PacIOOS (Pacific Islands Ocean Observing System) at the University of Hawaii (UH)",
       "http://oos.soest.hawaii.edu/erddap/"),
     c("NOAA IOOS SECOORA (Southeast Coastal Ocean Observing Regional Association)",
-      "http://129.252.139.124/erddap/"),
+      "http://erddap.secoora.org/erddap/"),
     c("NOAA NCEI (National Centers for Environmental Information) / NCDDC",
       "http://ecowatch.ncddc.noaa.gov/erddap/"),
     c("NOAA OSMC (Observing System Monitoring Center)",
@@ -36,6 +36,8 @@ servers <- function() {
       "http://bmlsc.ucdavis.edu:8080/erddap/"),
     c("R.Tech Engineering", "http://meteo.rtech.fr/erddap/"),
     c("French Research Institute for the Exploitation of the Sea",
-      "http://www.ifremer.fr/erddap/index.html")
+      "http://www.ifremer.fr/erddap/"),
+    c("UBC Earth, Ocean & Atmospheric Sciences SalishSeaCast Project",
+      "https://salishsea.eos.ubc.ca/erddap/")
   )), stringsAsFactors = FALSE), c('name', 'url'))
 }

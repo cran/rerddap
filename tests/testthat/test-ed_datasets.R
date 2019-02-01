@@ -1,20 +1,21 @@
 context("ed_datasets")
 
-
 test_that("ed_datasets returns the correct", {
   skip_on_cran()
-
-  a <- ed_datasets('table')
-  b <- ed_datasets('grid')
-
-  # class
+  vcr::use_cassette("ed_datasets_table", {
+    a <- ed_datasets('table')
+  })
+  
   expect_is(a, "data.frame")
-  expect_is(b, "data.frame")
   expect_is(a$griddap, "character")
-  expect_is(b$Institution, "character")
-
-  # dimensions
   expect_lt(NCOL(a), 50)
+
+  vcr::use_cassette("ed_datasets_grid", {
+    b <- ed_datasets('grid')
+  })
+    
+  expect_is(b, "data.frame")
+  expect_is(b$Institution, "character")
   expect_lt(NCOL(b), 50)
 })
 

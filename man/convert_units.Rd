@@ -4,8 +4,7 @@
 \alias{convert_units}
 \title{Convert a CF Standard Name to/from a GCMD Science Keyword}
 \usage{
-convert_units(udunits = NULL, ucum = NULL,
-  url = "http://coastwatch.pfeg.noaa.gov", ...)
+convert_units(udunits = NULL, ucum = NULL, url = eurl(), ...)
 }
 \arguments{
 \item{udunits}{character; A UDUNITS character string
@@ -14,9 +13,10 @@ convert_units(udunits = NULL, ucum = NULL,
 \item{ucum}{character; A UCUM character string
 \url{http://unitsofmeasure.org/ucum.html}}
 
-\item{url}{Base URL of the ERDDAP server}
+\item{url}{Base URL of the ERDDAP server. See \code{\link[=eurl]{eurl()}} for
+more information}
 
-\item{...}{Curl args passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \description{
 Convert a CF Standard Name to/from a GCMD Science Keyword

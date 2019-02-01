@@ -7,10 +7,11 @@
 #' @param page_size (integer) Results per page
 #' @param which (character) One of tabledep or griddap.
 #' @param url A URL for an ERDDAP server. Default:
-#' \url{https://upwell.pfeg.noaa.gov/erddap/}
-#' @param ... Further args passed on to \code{\link[httr]{GET}} (must be
-#' a named parameter)
-#' @references  \url{https://upwell.pfeg.noaa.gov/erddap/index.html}
+#' <https://upwell.pfeg.noaa.gov/erddap/>. See [eurl()] for 
+#' more information
+#' @param ... Curl options passed on to [crul::HttpClient] (must be
+#' named parameters)
+#' @references <https://upwell.pfeg.noaa.gov/erddap/index.html>
 #' @author Scott Chamberlain <myrmecocystus@@gmail.com>
 #' @examples \dontrun{
 #' (out <- ed_search(query='temperature'))
@@ -25,8 +26,6 @@
 #' # use a different ERDDAP server
 #' ## Marine Institute (Ireland)
 #' ed_search("temperature", url = "http://erddap.marine.ie/erddap/")
-#' ## Marine Domain Awareness (MDA) (Italy)
-#' ed_search("temperature", url = "https://bluehub.jrc.ec.europa.eu/erddap/")
 #' }
 
 ed_search <- function(query, page=NULL, page_size=NULL, which='griddap',

@@ -193,10 +193,20 @@ fix_dims <- function(dimargs, .info) {
     if (nm == "time") {
       tmp <- as.Date(tmp)
     }
+    
     val <- .info$alldata[[nm]][ .info$alldata[[nm]]$attribute_name == "actual_range", "value"]
     val2 <- as.numeric(strtrim(strsplit(val, ",")[[1]]))
     if (length(tmp) != 0) {
       if (which.min(val2) != which.min(tmp)) {
+        dimargs[[i]] <- rev(dimargs[[i]])
+      }
+    }
+
+    ## new
+    if (nm %in% c('latitude', 'longitude')) {
+      z <- unlist(strsplit(.info$alldata[[nm]]$value[1], ","))
+      spacing <- as.numeric(unlist(strsplit(z[3], "=")[[1]])[2])
+      if (spacing < 0) {
         dimargs[[i]] <- rev(dimargs[[i]])
       }
     }
@@ -261,7 +271,9 @@ dimvars <- function(x){
   vars[ !vars %in% c("NC_GLOBAL", x$variables$variable_name) ]
 }
 
-erd_up_GET <- function(url, dset, args, store, fmt, ...){
+erd_up_GET <- function(url, dset, args, store, fmt, callopts) {
+  if (length(args) > 0) url <- sprintf("%s?%s", url, args)
+  cli <- crul::HttpClient$new(url = url, opts = callopts)
   if (store$store == "disk") {
     # store on disk
     key <- gen_key(url, args, fmt)
@@ -269,15 +281,18 @@ erd_up_GET <- function(url, dset, args, store, fmt, ...){
       file.path(store$path, key)
     } else {
       dir.create(store$path, showWarnings = FALSE, recursive = TRUE)
-      res <- GET(url, query = args, write_disk(file.path(store$path, key), store$overwrite), ...)
+      if (!store$overwrite) {
+        stop('overwrite was `FALSE`, see ?disk')
+      }
+      res <- cli$get(disk = file.path(store$path, key))
       # delete file if error, and stop message
       err_handle(res, store, key)
       # return file path
-      res$request$output$path
+      res$content
     }
   } else {
     # read into memory, bypass disk storage
-    res <- GET(url, query = args, ...)
+    res <- cli$get()
     # if error stop message
     err_handle(res, store, key)
     # return response object

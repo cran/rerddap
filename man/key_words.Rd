@@ -14,9 +14,10 @@ http://cfconventions.org/Data/cf-standard-names/27/build/cf-standard-name-table.
 http://gcmd.gsfc.nasa.gov/learn/keyword_list.html}
 
 \item{url}{A URL for an ERDDAP server. Default:
-https://upwell.pfeg.noaa.gov/erddap/}
+https://upwell.pfeg.noaa.gov/erddap/. See \code{\link[=eurl]{eurl()}} for
+more information}
 
-\item{...}{Curl args passed on to \code{\link[httr]{GET}}}
+\item{...}{Curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
 }
 \description{
 Convert a CF Standard Name to/from a GCMD Science Keyword
@@ -25,9 +26,6 @@ Convert a CF Standard Name to/from a GCMD Science Keyword
  \dontrun{
 key_words(cf = "air_pressure")
 cat(key_words(cf = "air_pressure"))
-key_words(gcmd = "Atmosphere > Atmospheric Pressure > Sea Level Pressure")
-cat(
-key_words(gcmd = "Atmosphere > Atmospheric Pressure > Sea Level Pressure"))
 
 # a different ERDDAP server
 # key_words(cf = "air_pressure", url = servers()$url[6])
