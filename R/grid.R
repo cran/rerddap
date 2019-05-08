@@ -41,7 +41,7 @@ griddap <- function(x, ..., fields = 'all', stride = 1, fmt = "nc",
                      args = args, store = store, fmt = fmt, callopts)
   loc <- if (store$store == "disk") resp else "memory"
   outclasses <- switch(fmt,
-                       nc = c("griddap_nc", "nc", "data.frame"),
+                       nc = c("griddap_nc", "nc", "list"),
                        csv = c("griddap_csv", "csv", "data.frame"))
   read <- toggle_read(read, store)
   structure(
@@ -85,7 +85,7 @@ print.griddap_csv <- function(x, ...) {
     cat(sprintf("   File size:    [%s mb]", finfo$size), sep = "\n")
   }
   cat(sprintf("   Dimensions:   [%s X %s]\n", NROW(x), NCOL(x)), sep = "\n")
-  print(tibble::as_data_frame(x))
+  print(tibble::as_tibble(x))
 }
 
 #' @export
@@ -103,7 +103,7 @@ print.griddap_nc <- function(x, ...) {
   cat(sprintf("   Dim names: %s", paste0(names(x$summary$dim), collapse = ", ")), sep = "\n")
   cat(sprintf("   Variable names: %s", paste0(unname(sapply(x$summary$var, "[[", "longname")), collapse = ", ")), sep = "\n")
   cat(sprintf("   data.frame (rows/columns):   [%s X %s]", dim(x$data)[1], dim(x$data)[2]), sep = "\n\n")
-  print(tibble::as_data_frame(x$data))
+  print(tibble::as_tibble(x$data))
 }
 
 field_handler <- function(x, y){
@@ -207,7 +207,9 @@ fix_dims <- function(dimargs, .info) {
       z <- unlist(strsplit(.info$alldata[[nm]]$value[1], ","))
       spacing <- as.numeric(unlist(strsplit(z[3], "=")[[1]])[2])
       if (spacing < 0) {
-        dimargs[[i]] <- rev(dimargs[[i]])
+        if (!(dimargs[[i]][1] > dimargs[[i]][2])) {
+          dimargs[[i]] <- rev(dimargs[[i]])
+        }
       }
     }
   }

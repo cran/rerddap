@@ -62,7 +62,7 @@ test_that("tabledap units parameter fails correctly", {
       tabledap('erdCinpKfmBT', 'time>=2001-07-14', units = "stuff", store = memory()),
       "toUnits=UDUNITS must be UDUNITS or UCUM"
     )
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
 
 test_that("tabledap fails well on common mistakes", {
@@ -73,7 +73,7 @@ test_that("tabledap fails well on common mistakes", {
       "Unrecognized variable=\"bbbbb\"")
     expect_error(tabledap('erdCinpKfmBT', orderby = "things", store = memory()), 
       "'orderBy' variable=things isn't in the dataset")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 
   # failures that do not do HTTP requests
   skip_on_cran()

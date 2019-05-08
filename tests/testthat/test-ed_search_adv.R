@@ -62,5 +62,5 @@ test_that("ed_search_adv fails well", {
   vcr::use_cassette("ed_search_adv_errors", {
     expect_error(ed_search_adv(), "Not Found")
     expect_error(ed_search_adv(query = "adfafadfsd"), "Internal Server Error")
-  })
+  }, preserve_exact_body_bytes = TRUE)
 })
