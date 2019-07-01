@@ -1,7 +1,7 @@
-602d1d9329271c242d106f2934d291ff *DESCRIPTION
+d931aca6bca9cd65b5ca92a72c718125 *DESCRIPTION
 de9532c5aeb8082a5fc9cbee02186d6f *LICENSE
 e1967cc9a923d9ee8f17b03c20f6a984 *NAMESPACE
-e51f51af2b3e7b7f6effa5ce0b78a19b *NEWS.md
+1e5947d019534cac2b3e08d486bd6f29 *NEWS.md
 625d0e58401de81b315f4f1489dcbea3 *R/browse.R
 672ea2e291b9a727228637bd0ad063cb *R/cache_delete.R
 c5660e975697e82fb2af1604b15b55a4 *R/cache_details.R
@@ -25,8 +25,8 @@ cfa8cabf3e3c399bc6c525b6a6854f0e *R/search.R
 201f3a7fe2d867d6fe682d12015ba168 *R/table.R
 22c761e69ac9185ad43f9579503d3c1d *R/utils.R
 446b5f676d5d442c63d5f9ae5572c053 *R/version.R
-c8df38cb7f4c1f43d2c03b76901dce07 *R/zzz.r
-73a14ea6961934cf0f7a07548bb1952e *README.md
+83becdd0e65b9f7d4081b218a330950b *R/zzz.r
+4cc015448833836da03029daf3f6a8f6 *README.md
 e22c42c18be6f7b5076993973138ad5e *build/vignette.rds
 56b45c3d2f92e9bb4d33da23693432b5 *data/colors.rda
 b9f2aa10946e15b3e3abe29b9de5fa6a *data/institutions.rda
@@ -87,7 +87,7 @@ f7fc94503680a7bab5ca553053343708 *tests/testthat/test-ed_search.R
 15cdfc4e7836879693d91b41d646af03 *tests/testthat/test-ed_search_adv.R
 290c59c14cc7b0f3079e0ee9c867cf63 *tests/testthat/test-griddap.r
 f2fadcafde8b6fb7a40bab0e9a8082b0 *tests/testthat/test-info.R
-3a1a1d1ec0c8977a442da7e998c793f5 *tests/testthat/test-tabledap.R
+2a6c5ae9f956d2f7c619de36bd303448 *tests/testthat/test-tabledap.R
 0728caa2a085f6de26930b5033a9bc82 *tests/vcr_cassettes/convert_time.yml
 f574b1f8f398e6cc6a5fc2873b5cc498 *tests/vcr_cassettes/convert_units.yml
 babb3ecb5a283e49917cc8c1eb1ab0f8 *tests/vcr_cassettes/ed_datasets_table.yml
