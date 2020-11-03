@@ -8,15 +8,15 @@ convert_units(udunits = NULL, ucum = NULL, url = eurl(), ...)
 }
 \arguments{
 \item{udunits}{character; A UDUNITS character string
-\url{http://www.unidata.ucar.edu/software/udunits/}}
+https://www.unidata.ucar.edu/software/udunits/}
 
 \item{ucum}{character; A UCUM character string
-\url{http://unitsofmeasure.org/ucum.html}}
+https://ucum.org/ucum.html}
 
 \item{url}{Base URL of the ERDDAP server. See \code{\link[=eurl]{eurl()}} for
 more information}
 
-\item{...}{Curl options passed on to \link[crul:HttpClient]{crul::HttpClient}}
+\item{...}{Curl options passed on to \link[crul:verb-GET]{crul::verb-GET}}
 }
 \description{
 Convert a CF Standard Name to/from a GCMD Science Keyword

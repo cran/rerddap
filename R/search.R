@@ -7,12 +7,11 @@
 #' @param page_size (integer) Results per page
 #' @param which (character) One of tabledep or griddap.
 #' @param url A URL for an ERDDAP server. Default:
-#' <https://upwell.pfeg.noaa.gov/erddap/>. See [eurl()] for 
+#' https://upwell.pfeg.noaa.gov/erddap/ - See [eurl()] for 
 #' more information
-#' @param ... Curl options passed on to [crul::HttpClient] (must be
+#' @param ... Curl options passed on to [crul::verb-GET] (must be
 #' named parameters)
-#' @references <https://upwell.pfeg.noaa.gov/erddap/index.html>
-#' @author Scott Chamberlain <myrmecocystus@@gmail.com>
+#' @references https://upwell.pfeg.noaa.gov/erddap/index.html
 #' @examples \dontrun{
 #' (out <- ed_search(query='temperature'))
 #' out$alldata[[1]]
@@ -60,19 +59,6 @@ ed_search <- function(query, page=NULL, page_size=NULL, which='griddap',
 #' @export
 print.ed_search <- function(x, ...){
   print(tibble::as_tibble(x$info))
-}
-
-table_or_grid <- function(datasetid){
-  table_url <- paste0(eurl(), 'tabledap/index.json')
-  tab <- toghelper(table_url)
-  if (datasetid %in% tab) "tabledap" else "griddap"
-}
-
-toghelper <- function(url){
-  out <- erdddap_GET(url, list(page = 1, itemsPerPage = 10000L))
-  nms <- out$table$columnNames
-  lists <- lapply(out$table$rows, stats::setNames, nm = nms)
-  vapply(lists, "[[", "", "Dataset ID")
 }
 
 #' @export

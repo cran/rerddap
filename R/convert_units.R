@@ -2,12 +2,12 @@
 #'
 #' @export
 #' @param udunits character; A UDUNITS character string
-#' <http://www.unidata.ucar.edu/software/udunits/>
+#' https://www.unidata.ucar.edu/software/udunits/
 #' @param ucum character; A UCUM character string
-#' <http://unitsofmeasure.org/ucum.html>
+#' https://ucum.org/ucum.html
 #' @param url Base URL of the ERDDAP server. See [eurl()] for 
 #' more information
-#' @param ... Curl options passed on to [crul::HttpClient]
+#' @param ... Curl options passed on to [crul::verb-GET]
 #' @examples  \dontrun{
 #' convert_units(udunits = "degree_C meter-1")
 #' convert_units(ucum = "Cel.m-1")

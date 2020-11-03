@@ -18,8 +18,8 @@ test_that("tabledap returns the correct stuff", {
   expect_gt(NCOL(b), 20)
 
   vcr::use_cassette("tabledap_disk", {
-    a <- tabledap('erdCinpKfmBT', store = disk(path = 'fixtures/'))
-    b <- tabledap('erdCinpKfmBT', 'time>=2007-06-24', 'time<=2007-07-01', store = disk('fixtures/'))
+    a <- tabledap('erdCinpKfmBT', store = disk())
+    b <- tabledap('erdCinpKfmBT', 'time>=2007-06-24', 'time<=2007-07-01', store = disk())
   })
 
   # class
@@ -35,7 +35,7 @@ test_that("tabledap returns the correct stuff", {
 test_that("tabledap fields parameter works", {
   vcr::use_cassette("tabledap_fields_parameter", {
     d <- tabledap('erdCinpKfmBT', fields = c('longitude','latitude','Haliotis_fulgens_Mean_Density'),
-                  'time>=2001-07-14', store = disk('fixtures/'))
+                  'time>=2001-07-14', store = disk())
   })
 
   expect_is(d, "tabledap")
@@ -52,7 +52,7 @@ test_that("tabledap fields parameter fails correctly", {
 test_that("tabledap units parameter works", {
   vcr::use_cassette("tabledap_units_parameter", {
     e <- tabledap('erdCinpKfmBT', fields = c('longitude','latitude','Haliotis_fulgens_Mean_Density'),
-                  'time>=2001-07-14', units = 'udunits', store = disk("fixtures/"))
+                  'time>=2001-07-14', units = 'udunits', store = disk())
   })
   
   expect_is(e, "tabledap")
@@ -84,6 +84,19 @@ test_that("tabledap fails well on common mistakes", {
 
   expect_error(tabledap(), "argument \"x\" is missing")
   expect_error(tabledap('erdCinpKfmBT', distinct = "bear"), "not interpretable as logical")
+})
+
+test_that("tabledap - info() output passed to griddap", {
+  skip_on_cran()
+  # info_output2 <- info('erdCinpKfmBT')
+  # save(info_output2, file="tests/testthat/info_output2.rda", version=2)
+  load("info_output2.rda")
+  vcr::use_cassette("tabledap_info_passed_to_x", {
+    expect_message(
+      tabledap(info_output2, 'time>=2007-06-24', 'time<=2007-07-01'),
+      "setting base url"
+    )
+  })
 })
 
 # unlink(cache_info()$path, recursive = TRUE)

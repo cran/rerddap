@@ -8,7 +8,7 @@
 #' @param x  datasetid or an object associated with a datasetid such
 #' [info()], [griddap()] or [tabledap()]
 #' @param url A URL for an ERDDAP server. Default:
-#' <https://upwell.pfeg.noaa.gov/erddap/>. See [eurl()] for 
+#' https://upwell.pfeg.noaa.gov/erddap/ - See [eurl()] for 
 #' more information
 #' @param ... Further args passed on to `utils::browseURL`
 #' (must be a named parameter)
@@ -16,6 +16,7 @@
 #' if not, then prints the URL in the console
 #' @author Ben Tupper \email{btupper@@bigelow.org}
 #' @examples \dontrun{
+#' if (interactive()) {
 #' # browse by dataset_id
 #' browse('erdATastnhday')
 #'
@@ -27,7 +28,7 @@
 #' my_tabledap <- tabledap('erdCalCOFIlrvsiz', fields=c('latitude','longitude','larvae_size',
 #'    'itis_tsn'), 'time>=2011-10-25', 'time<=2011-10-31')
 #' browse(my_tabledap)
-#' }
+#' }}
 browse <- function(x, url = eurl(), ...){
   UseMethod("browse", x)
 }

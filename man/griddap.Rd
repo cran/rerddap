@@ -4,8 +4,17 @@
 \alias{griddap}
 \title{Get ERDDAP gridded data}
 \usage{
-griddap(x, ..., fields = "all", stride = 1, fmt = "nc",
-  url = eurl(), store = disk(), read = TRUE, callopts = list())
+griddap(
+  x,
+  ...,
+  fields = "all",
+  stride = 1,
+  fmt = "nc",
+  url = eurl(),
+  store = disk(),
+  read = TRUE,
+  callopts = list()
+)
 }
 \arguments{
 \item{x}{Anything coercable to an object of class info. So the output of a
@@ -15,7 +24,7 @@ through \code{\link{info}}}
 \item{...}{Dimension arguments. See examples. Can be any 1 or more of the
 dimensions for the particular dataset - and the dimensions vary by dataset.
 For each dimension, pass in a vector of length two, with min and max value
-desired.}
+desired. at least 1 required.}
 
 \item{fields}{(character) Fields to return, in a character vector.}
 
@@ -25,7 +34,7 @@ every other value, etc. Default: 1 (i.e., get every value)}
 \item{fmt}{(character) One of csv or nc (for netcdf). Default: nc}
 
 \item{url}{A URL for an ERDDAP server. Default:
-\url{https://upwell.pfeg.noaa.gov/erddap/}. See \code{\link[=eurl]{eurl()}} for
+https://upwell.pfeg.noaa.gov/erddap/ - See \code{\link[=eurl]{eurl()}} for
 more information}
 
 \item{store}{One of \code{\link{disk}} (default) or \code{\link{memory}}. You
@@ -38,7 +47,7 @@ For large csv, or especially netcdf files, you may want to set this to
 \code{FALSE}, which simply returns a summary of the dataset - and you can
 read in data piecemeal later. Default: \code{TRUE}}
 
-\item{callopts}{Curl options passed on to \code{\link[crul]{HttpClient}}}
+\item{callopts}{Curl options passed on to \code{\link[crul]{verb-GET}}}
 }
 \value{
 An object of class \code{griddap_csv} if csv chosen or
@@ -196,18 +205,20 @@ info("erdMBchla1day")
 
 # Use a different ERDDAP server url
 ## NOAA IOOS PacIOOS
-url = "http://oos.soest.hawaii.edu/erddap/"
-out <- info("NOAA_DHW_5km", url = url)
+url = "https://cwcgom.aoml.noaa.gov/erddap/"
+out <- info("miamiacidification", url = url)
 (res <- griddap(out,
- time = c('2015-11-01','2015-11-03'),
- latitude = c(21, 20),
- longitude = c(10, 11)
+ time = c('2019-11-01','2019-11-03'),
+ latitude = c(15, 16),
+ longitude = c(-90, -88)
 ))
-## pass directly into griddap()
-griddap("NOAA_DHW_5km", url = url,
- time = c('2015-11-01','2015-11-03'),
- latitude = c(21, 20),
- longitude = c(10, 11)
+## pass directly into griddap() - if you pass a datasetid string directly
+## you must pass in the url or you'll be querying the default ERDDAP url,
+## which isn't the one you want if you're not using the default ERDDAP url
+griddap("miamiacidification", url = url,
+ time = c('2019-11-01','2019-11-03'),
+ latitude = c(15, 16),
+ longitude = c(-90, -88)
 )
 
 # Using 'last'
@@ -246,7 +257,4 @@ griddap('erdVHNchlamday',
 }
 \references{
 https://upwell.pfeg.noaa.gov/erddap/rest.html
-}
-\author{
-Scott Chamberlain \href{mailto:myrmecocystus@gmail.com}{myrmecocystus@gmail.com}
 }

@@ -11,7 +11,7 @@ browse(x, url = eurl(), ...)
 \code{\link[=info]{info()}}, \code{\link[=griddap]{griddap()}} or \code{\link[=tabledap]{tabledap()}}}
 
 \item{url}{A URL for an ERDDAP server. Default:
-\url{https://upwell.pfeg.noaa.gov/erddap/}. See \code{\link[=eurl]{eurl()}} for
+https://upwell.pfeg.noaa.gov/erddap/ - See \code{\link[=eurl]{eurl()}} for
 more information}
 
 \item{...}{Further args passed on to \code{utils::browseURL}
@@ -27,6 +27,7 @@ returns \code{FALSE}
 }
 \examples{
 \dontrun{
+if (interactive()) {
 # browse by dataset_id
 browse('erdATastnhday')
 
@@ -38,7 +39,7 @@ browse(my_info)
 my_tabledap <- tabledap('erdCalCOFIlrvsiz', fields=c('latitude','longitude','larvae_size',
    'itis_tsn'), 'time>=2011-10-25', 'time<=2011-10-31')
 browse(my_tabledap)
-}
+}}
 }
 \author{
 Ben Tupper \email{btupper@bigelow.org}

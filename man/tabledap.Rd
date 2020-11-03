@@ -4,9 +4,20 @@
 \alias{tabledap}
 \title{Get ERDDAP tabledap data.}
 \usage{
-tabledap(x, ..., fields = NULL, distinct = FALSE, orderby = NULL,
-  orderbymax = NULL, orderbymin = NULL, orderbyminmax = NULL,
-  units = NULL, url = eurl(), store = disk(), callopts = list())
+tabledap(
+  x,
+  ...,
+  fields = NULL,
+  distinct = FALSE,
+  orderby = NULL,
+  orderbymax = NULL,
+  orderbymin = NULL,
+  orderbyminmax = NULL,
+  units = NULL,
+  url = eurl(),
+  store = disk(),
+  callopts = list()
+)
 }
 \arguments{
 \item{x}{Anything coercable to an object of class info. So the output of
@@ -18,7 +29,7 @@ See Details & examples}
 
 \item{fields}{Columns to return, as a character vector}
 
-\item{distinct}{If TRUE ERDDAP will sort all of the rows in the results
+\item{distinct}{If \code{TRUE} ERDDAP will sort all of the rows in the results
 table (starting with the first requested variable, then using the second
 requested variable if the first variable has a tie, ...), then remove all
 non-unique rows of data. In many situations, ERDDAP can return distinct
@@ -53,13 +64,13 @@ standard (e.g.,degrees_C)) or 'ucum' (units will be described via the
 UCUM standard (e.g., Cel)).}
 
 \item{url}{A URL for an ERDDAP server.
-Default: \url{https://upwell.pfeg.noaa.gov/erddap/}. See \code{\link[=eurl]{eurl()}} for
+Default: https://upwell.pfeg.noaa.gov/erddap/ - See \code{\link[=eurl]{eurl()}} for
 more information}
 
 \item{store}{One of \code{disk} (default) or \code{memory}. You can pass
 options to \code{disk}}
 
-\item{callopts}{Curl options passed on to \link[crul:HttpClient]{crul::HttpClient} (must be
+\item{callopts}{Curl options passed on to \link[crul:verb-GET]{crul::verb-GET} (must be
 named parameters)}
 }
 \value{
@@ -105,12 +116,12 @@ with servers or this package
 tabledap('erdCinpKfmBT')
 
 # Pass time constraints
-tabledap('hawaii_soest_5742_4f35_ff55', 'time>=2011-08-24', 'time<=2011-09-01')
+tabledap('erdCinpKfmBT', 'time>=2006-08-24')
 
 # Pass in fields (i.e., columns to retrieve) & time constraints
-tabledap('hawaii_soest_5742_4f35_ff55',
-  fields = c('longitude', 'latitude', 'speed_over_ground'),
-  'time>=2011-08-24', 'time<=2011-09-01'
+tabledap('erdCinpKfmBT',
+  fields = c('longitude', 'latitude', 'Aplysia_californica_Mean_Density'),
+  'time>=2006-08-24'
 )
 
 # Get info on a datasetid, then get data given information learned
@@ -122,10 +133,11 @@ tabledap('erdCalCOFIlrvsiz', fields=c('latitude','longitude','larvae_size',
 ## Search for data
 (out <- ed_search(query='fish', which = 'table'))
 ## Using a datasetid, search for information on a datasetid
-id <- "nwioosHudFishDetails"
-info(id)$variables
+id <- out$alldata[[1]]$dataset_id
+vars <- info(id)$variables
 ## Get data from the dataset
-tabledap(id, fields = c('scientific_name', 'species_id', 'life_stage'))
+vars$variable_name[1:3]
+tabledap(id, fields = vars$variable_name[1:3])
 
 # Time constraint
 ## Limit by time with date only
@@ -135,9 +147,9 @@ tabledap(info, fields = c(
   'time>=2001-07-14')
 
 # Use distinct parameter - compare to distinct = FALSE
-tabledap('hawaii_soest_5742_4f35_ff55',
-   fields=c('longitude','latitude','speed_over_ground'),
-   'time>=2011-08-24', 'time<=2011-09-01', distinct = TRUE)
+tabledap('sg114_3',
+   fields=c('longitude','latitude','trajectory'),
+   'time>=2008-12-05', distinct = TRUE)
 
 # Use units parameter
 ## In this example, values are the same, but sometimes they can be different
@@ -193,8 +205,5 @@ tabledap("E01_optics_hist", url = url)
 }
 }
 \references{
-\url{https://upwell.pfeg.noaa.gov/erddap/index.html}
-}
-\author{
-Scott Chamberlain \href{mailto:myrmecocystus@gmail.com}{myrmecocystus@gmail.com}
+https://upwell.pfeg.noaa.gov/erddap/index.html
 }
