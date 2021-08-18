@@ -1,7 +1,7 @@
-1d3580e103091f63369e2c213b9afdbf *DESCRIPTION
+e1dde9f13dcc9ce8ecd1f8022a98b305 *DESCRIPTION
 e34152a5351f580b172ee7093ca84124 *LICENSE
 e1967cc9a923d9ee8f17b03c20f6a984 *NAMESPACE
-ea7a84bc9f988f5cfdb72e7c141c552d *NEWS.md
+e7b461cd1dbb21c380a10f4011f73c21 *NEWS.md
 0e12f2b4bfcd5f9447016934949712b5 *R/browse.R
 672ea2e291b9a727228637bd0ad063cb *R/cache_delete.R
 c5660e975697e82fb2af1604b15b55a4 *R/cache_details.R
@@ -13,8 +13,8 @@ d8f34425621b999b64baecc160443569 *R/colors.R
 f82998c248a71d73fab9334f67845efa *R/convert_units.R
 573a0d52d9fa228e81b313172c5593c0 *R/default-url.R
 990ebe8e5004f7715b913170aced62a5 *R/fipscounty.R
-aa528ca9795935130a5248c0d7c7cb8a *R/grid.R
-fc6a5d1826fe0278e09e9aff07a09966 *R/info.R
+b4f77bcd27f532ec76ccdad10b5f30d6 *R/grid.R
+7868fd47ec74a59916724fb6f32525f4 *R/info.R
 a8da814f4470699ab5a9354070effe2b *R/keywords.R
 a314511da8643e0f52a4098afd40183a *R/ncdf_helpers.R
 97fc2f29b590d0bd6163e8dff86b9b39 *R/on_load.R
@@ -22,7 +22,7 @@ a314511da8643e0f52a4098afd40183a *R/ncdf_helpers.R
 75652344e2a887ddb30fd9ccc7caf7fa *R/search.R
 0f6e9b245d5b8d4762ef4817d53f0f2a *R/search_adv.R
 81ecade083ae348e410d37ed2c510896 *R/servers.R
-0e434e57f3523dc4b9155a064001bad0 *R/table.R
+2a421f8c4d4e20698f005e8762fe97f5 *R/table.R
 22c761e69ac9185ad43f9579503d3c1d *R/utils.R
 d5160778c886f02b8f042d6204aee7d9 *R/version.R
 ae0016377f3b1cca204aef5bd59e858e *R/zzz.r
@@ -97,7 +97,7 @@ ff08987d534f15e3ec3e857623ae986c *tests/testthat/test-ed_datasets.R
 e75d5ce6b5154ae1bd325f5edad93c7f *tests/testthat/test-ed_search.R
 1837d4a767987ed0b3a051cd6bae3b34 *tests/testthat/test-ed_search_adv.R
 0a873957b034df16abf202d712d539e8 *tests/testthat/test-griddap.r
-8c376e350fbea2a7edcd784269ab0691 *tests/testthat/test-info.R
+f37e4ca16a248d94b8e4120d459b25e8 *tests/testthat/test-info.R
 84cbd313ad71face8369691bd45314c4 *tests/testthat/test-servers.R
 61b8e954c1831ed764e2764d8399cc06 *tests/testthat/test-tabledap.R
 f91fd3765aeda34cac9d3371bf4ee99c *tests/vcr_cassettes/convert_time.yml
@@ -116,6 +116,8 @@ bab6274fbfcba2f1e553570aa9f2026b *tests/vcr_cassettes/griddap_info_passed_to_x.y
 4175112d28d5c81bc23707621b0c97e7 *tests/vcr_cassettes/griddap_north_south_latitude.yml
 3f3a071283633fc50d89c20e9dccda34 *tests/vcr_cassettes/griddap_read_parameter.yml
 e3aae320515b05077bc24bdf84d8e474 *tests/vcr_cassettes/info_diff_servers.yml
+9b72eca62cbad01c4f5c702c63583154 *tests/vcr_cassettes/info_url_slash.yml
+69f2cfaeb8547e456bb9b79a32956c89 *tests/vcr_cassettes/info_url_slash2.yml
 acbdbc6f5452b5f6dd61a0b82f8e5bc6 *tests/vcr_cassettes/servers.yml
 4862cf3099b6c04884a522dd5913820d *tests/vcr_cassettes/tabledap_fields_fails_well.yml
 58efac76bc7df48496d27258c8ff6dc0 *tests/vcr_cassettes/tabledap_fields_parameter.yml
