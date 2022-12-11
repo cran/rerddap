@@ -1,13 +1,13 @@
-c6bcfd1c22d182670bfe0f2c1e735855 *DESCRIPTION
+74fee4c00d3e63375313ed67787397fe *DESCRIPTION
 e34152a5351f580b172ee7093ca84124 *LICENSE
 dd738299ed133c1c7caf213c3c9124f9 *NAMESPACE
-561824ed6df741c181a47939cfdbf17a *NEWS.md
+9aa07b6e939df34c3dafd975b581fd0c *NEWS.md
 0e12f2b4bfcd5f9447016934949712b5 *R/browse.R
 672ea2e291b9a727228637bd0ad063cb *R/cache_delete.R
 c5660e975697e82fb2af1604b15b55a4 *R/cache_details.R
 7413f5db3ebd9c8aad4236d452cbbc60 *R/cache_list.R
 65a57533538797c63787715d7b50d3cd *R/cache_paths.R
-7fd48f92bb51e93288369f3ef06a74ba *R/cache_setup.R
+a8c82ca98d2f322f1cb5a896b3d9c725 *R/cache_setup.R
 d8f34425621b999b64baecc160443569 *R/colors.R
 573cd3ee4497ad96f98bbbd8705c99a5 *R/convert_time.R
 f82998c248a71d73fab9334f67845efa *R/convert_units.R
@@ -18,7 +18,7 @@ f82998c248a71d73fab9334f67845efa *R/convert_units.R
 7868fd47ec74a59916724fb6f32525f4 *R/info.R
 a8da814f4470699ab5a9354070effe2b *R/keywords.R
 a4eec4e4c658a0f0070c5a432199a440 *R/ncdf_helpers.R
-97fc2f29b590d0bd6163e8dff86b9b39 *R/on_load.R
+8f78e074427516ec9619d2d7cfef2628 *R/on_load.R
 3b5df5862e486d43ed37ba96be2e9ace *R/rerddap-package.r
 75652344e2a887ddb30fd9ccc7caf7fa *R/search.R
 0f6e9b245d5b8d4762ef4817d53f0f2a *R/search_adv.R
@@ -27,7 +27,7 @@ a4eec4e4c658a0f0070c5a432199a440 *R/ncdf_helpers.R
 22c761e69ac9185ad43f9579503d3c1d *R/utils.R
 d5160778c886f02b8f042d6204aee7d9 *R/version.R
 ae0016377f3b1cca204aef5bd59e858e *R/zzz.r
-968119d1726cc7d3b3fbad87882a1203 *build/vignette.rds
+dacc560ae286626078c35c91c325889a *build/vignette.rds
 56b45c3d2f92e9bb4d33da23693432b5 *data/colors.rda
 b9f2aa10946e15b3e3abe29b9de5fa6a *data/institutions.rda
 0d1fe4dc2821637cdff0e3b6b5e1f278 *data/ioos_categories.rda
@@ -37,7 +37,7 @@ f7060cf5fe5f002e71cbab98422e42ae *data/standardnames.rda
 42b22dfda8ba4097645fc8cfab21695a *data/variablenames.rda
 4dedb9935ce0765f66dd917e736e2799 *inst/doc/Using_rerddap.R
 52b039a632ea6444dab95ddc2d3fb99b *inst/doc/Using_rerddap.Rmd
-d8147b4a3416be9da21fa759cc4069d6 *inst/doc/Using_rerddap.html
+78310d245890ec36d114059e8058ee8c *inst/doc/Using_rerddap.html
 5a3092471119de2d6be5c93be474b11c *inst/doc/rerddap.Rmd
 0c02f5c39a86b1b125c5af63594d699b *inst/doc/rerddap.html
 ffb97db147184664c7141d23df510a87 *inst/extdata/MWsstd1day.nc
@@ -45,7 +45,7 @@ ffb97db147184664c7141d23df510a87 *inst/extdata/MWsstd1day.nc
 9b0cafb453f12cf7fae4a3479aae9812 *man/cache_delete.Rd
 4d6dc9606f1502088b2504f953ca051f *man/cache_details.Rd
 9361e3b4a0e637f83fc91901a276dd2c *man/cache_list.Rd
-c9bb7297ce9486605bb57c406cd69529 *man/cache_setup.Rd
+e4c34081116118c4e6933552bb7eba04 *man/cache_setup.Rd
 21cc2f953d6ad89ff9bdcbd3fdbdf8dd *man/colors.Rd
 8b4600b933159c3faeb81aacb8765c28 *man/convert_time.Rd
 1c1d5a730c85d33a5f8211e33e5659b0 *man/convert_units.Rd
