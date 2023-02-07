@@ -1,7 +1,7 @@
-74fee4c00d3e63375313ed67787397fe *DESCRIPTION
+b0fbf0da8ea36ed9f9640d279c8edbad *DESCRIPTION
 e34152a5351f580b172ee7093ca84124 *LICENSE
 dd738299ed133c1c7caf213c3c9124f9 *NAMESPACE
-9aa07b6e939df34c3dafd975b581fd0c *NEWS.md
+91fb99509860d6943fb1dde40e94fcec *NEWS.md
 0e12f2b4bfcd5f9447016934949712b5 *R/browse.R
 672ea2e291b9a727228637bd0ad063cb *R/cache_delete.R
 c5660e975697e82fb2af1604b15b55a4 *R/cache_details.R
@@ -14,7 +14,7 @@ f82998c248a71d73fab9334f67845efa *R/convert_units.R
 573a0d52d9fa228e81b313172c5593c0 *R/default-url.R
 990ebe8e5004f7715b913170aced62a5 *R/fipscounty.R
 300e614399636995874721bda3d8948a *R/global_search.R
-5b44dc34b2130557c0506c00f6f23e73 *R/grid.R
+5a1547cdf297512cc3dbfe49b1b4f6dd *R/grid.R
 7868fd47ec74a59916724fb6f32525f4 *R/info.R
 a8da814f4470699ab5a9354070effe2b *R/keywords.R
 a4eec4e4c658a0f0070c5a432199a440 *R/ncdf_helpers.R
@@ -37,7 +37,7 @@ f7060cf5fe5f002e71cbab98422e42ae *data/standardnames.rda
 42b22dfda8ba4097645fc8cfab21695a *data/variablenames.rda
 4dedb9935ce0765f66dd917e736e2799 *inst/doc/Using_rerddap.R
 52b039a632ea6444dab95ddc2d3fb99b *inst/doc/Using_rerddap.Rmd
-78310d245890ec36d114059e8058ee8c *inst/doc/Using_rerddap.html
+760fa5c1378348201f99872d5e1d9be6 *inst/doc/Using_rerddap.html
 5a3092471119de2d6be5c93be474b11c *inst/doc/rerddap.Rmd
 0c02f5c39a86b1b125c5af63594d699b *inst/doc/rerddap.html
 ffb97db147184664c7141d23df510a87 *inst/extdata/MWsstd1day.nc
