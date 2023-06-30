@@ -1,3 +1,10 @@
+rerddap 1.0.3
+=============
+* Provides exta checks on time bounds.
+* Fixes some typos and a mistake showing 'global_search()' in vignette
+
+
+
 rerddap 1.0.2
 =============
 Ensure '[' and ']' properly encoded in URL

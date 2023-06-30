@@ -1,7 +1,7 @@
-b0fbf0da8ea36ed9f9640d279c8edbad *DESCRIPTION
+635e437ea94825c85b74dea547280494 *DESCRIPTION
 e34152a5351f580b172ee7093ca84124 *LICENSE
 dd738299ed133c1c7caf213c3c9124f9 *NAMESPACE
-91fb99509860d6943fb1dde40e94fcec *NEWS.md
+ee62c1e021b10122a55a04116cc08a1d *NEWS.md
 0e12f2b4bfcd5f9447016934949712b5 *R/browse.R
 672ea2e291b9a727228637bd0ad063cb *R/cache_delete.R
 c5660e975697e82fb2af1604b15b55a4 *R/cache_details.R
@@ -13,8 +13,8 @@ d8f34425621b999b64baecc160443569 *R/colors.R
 f82998c248a71d73fab9334f67845efa *R/convert_units.R
 573a0d52d9fa228e81b313172c5593c0 *R/default-url.R
 990ebe8e5004f7715b913170aced62a5 *R/fipscounty.R
-300e614399636995874721bda3d8948a *R/global_search.R
-5a1547cdf297512cc3dbfe49b1b4f6dd *R/grid.R
+8091ec8c747a4e24def7638331f8654a *R/global_search.R
+f493366263730f4b1bbe1e86bbf5e590 *R/grid.R
 7868fd47ec74a59916724fb6f32525f4 *R/info.R
 a8da814f4470699ab5a9354070effe2b *R/keywords.R
 a4eec4e4c658a0f0070c5a432199a440 *R/ncdf_helpers.R
@@ -27,7 +27,7 @@ a4eec4e4c658a0f0070c5a432199a440 *R/ncdf_helpers.R
 22c761e69ac9185ad43f9579503d3c1d *R/utils.R
 d5160778c886f02b8f042d6204aee7d9 *R/version.R
 ae0016377f3b1cca204aef5bd59e858e *R/zzz.r
-dacc560ae286626078c35c91c325889a *build/vignette.rds
+4756485006b28f4179f3c676a33418d9 *build/vignette.rds
 56b45c3d2f92e9bb4d33da23693432b5 *data/colors.rda
 b9f2aa10946e15b3e3abe29b9de5fa6a *data/institutions.rda
 0d1fe4dc2821637cdff0e3b6b5e1f278 *data/ioos_categories.rda
@@ -37,9 +37,9 @@ f7060cf5fe5f002e71cbab98422e42ae *data/standardnames.rda
 42b22dfda8ba4097645fc8cfab21695a *data/variablenames.rda
 4dedb9935ce0765f66dd917e736e2799 *inst/doc/Using_rerddap.R
 52b039a632ea6444dab95ddc2d3fb99b *inst/doc/Using_rerddap.Rmd
-760fa5c1378348201f99872d5e1d9be6 *inst/doc/Using_rerddap.html
-5a3092471119de2d6be5c93be474b11c *inst/doc/rerddap.Rmd
-0c02f5c39a86b1b125c5af63594d699b *inst/doc/rerddap.html
+7df1cc285595717a8226c492eae94138 *inst/doc/Using_rerddap.html
+e860e3fdf6e3c4b18b9db1b8c27cd4b2 *inst/doc/rerddap.Rmd
+2c06a3a7ffcc83cd2adcfa21b088592c *inst/doc/rerddap.html
 ffb97db147184664c7141d23df510a87 *inst/extdata/MWsstd1day.nc
 1b390b3171a17c10a1431abf6ab9c34f *man/browse.Rd
 9b0cafb453f12cf7fae4a3479aae9812 *man/cache_delete.Rd
@@ -54,7 +54,7 @@ e4073b1eecc8341723ff0ff1d8e4d4b4 *man/ed_search.Rd
 f6b81bc40b603ea0e5027b2fb4c6524f *man/ed_search_adv.Rd
 f833d2ab617a99b79e66df2165072322 *man/eurl.Rd
 45139d18b51fe6efacd36a2663e400d1 *man/fipscounty.Rd
-dc374dca96d0b78fd99a87e34ec333e9 *man/global_search.Rd
+8364d13c236cbbd0d2d5dbc4a50c92c3 *man/global_search.Rd
 a51042a1f7d109ae0c27a8cf09da9417 *man/griddap.Rd
 af8cde98d0d2160606896e0434b1da39 *man/info.Rd
 f26b7f6c53fd476cc8948bea7ba943c9 *man/institutions.Rd
@@ -85,7 +85,7 @@ cf4a20e425638622248bf2e0f46e71ca *vignettes/atn.png
 32ff133b33c7df6583b8d57fc04bebe7 *vignettes/glider.png
 8b1469f8070105849c23470b9086024a *vignettes/ifrPSA.png
 55431c7690c2f43fda132149d19aff40 *vignettes/maxslp.png
-5a3092471119de2d6be5c93be474b11c *vignettes/rerddap.Rmd
-a78b0e514d0d36103bd55f9d8d4d6f71 *vignettes/rerddap.Rmd.og
+e860e3fdf6e3c4b18b9db1b8c27cd4b2 *vignettes/rerddap.Rmd
+2602081e4ebb2aa043fe2ce6bf05bc42 *vignettes/rerddap.Rmd.og
 f2b50469201b5654c1fd81593ee4cb17 *vignettes/sardines.png
 92699fc5b3a9ed2b8b05df6090bc5a20 *vignettes/soda70.png
