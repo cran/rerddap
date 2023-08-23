@@ -12,7 +12,7 @@
 
 <meta name="author" content="Roy Mendelssohn and Scott Chamberlain" />
 
-<meta name="date" content="2023-06-30" />
+<meta name="date" content="2023-08-22" />
 
 <title>Using rerddap to Access Data from ERDDAP Servers</title>
 
@@ -341,7 +341,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h1 class="title toc-ignore">Using rerddap to Access Data from ERDDAP
 Servers</h1>
 <h4 class="author">Roy Mendelssohn and Scott Chamberlain</h4>
-<h4 class="date">2023-06-30</h4>
+<h4 class="date">2023-08-22</h4>
 
 
 
@@ -436,20 +436,20 @@ a particular <span style="color:red">ERDDAP</span> server. A list of
 some of the public available <span style="color:red">ERDDAP</span>
 servers can be obtained from the <code>rerddap</code> command:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">servers</span>()</span>
-<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co">#&gt; # A tibble: 59 × 4</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="co">#&gt; # A tibble: 61 × 4</span></span>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="co">#&gt;    name                                                  short_name url   public</span></span>
 <span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">#&gt;    &lt;chr&gt;                                                 &lt;chr&gt;      &lt;chr&gt; &lt;lgl&gt; </span></span>
-<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt;  1 CoastWatch West Coast Node                            CSWC       http… TRUE  </span></span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt;  2 ERDDAP at the Asia-Pacific Data-Research Center       APDRC      http… TRUE  </span></span>
-<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">#&gt;  3 NOAA&#39;s National Centers for Environmental Informatio… NCEI       http… TRUE  </span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt;  4 Biological and Chemical Oceanography Data Management… BCODMO     http… TRUE  </span></span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt;  5 European Marine Observation and Data Network (EMODne… EMODnet    http… TRUE  </span></span>
-<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt;  6 Marine Institute - Ireland                            MII        http… TRUE  </span></span>
-<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#&gt;  7 CoastWatch Caribbean/Gulf of Mexico Node              CSCGOM     http… TRUE  </span></span>
-<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="co">#&gt;  8 NOAA IOOS Sensors ERDDAP                              IOOS-Sens… http… TRUE  </span></span>
-<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt;  9 NOAA IOOS CeNCOOS (Central and Northern California O… CeNCOOS    http… TRUE  </span></span>
-<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#&gt; 10 CeNCOOS (Central and Northern California Ocean Obser… CeNCOOS E… http… TRUE  </span></span>
-<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt; # ℹ 49 more rows</span></span></code></pre></div>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt;  1 St. Lawrence Global Observatory - CIOOS | Observatoi… SLGO-OGSL  http… TRUE  </span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt;  2 CoastWatch West Coast Node                            CSWC       http… TRUE  </span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">#&gt;  3 ERDDAP at the Asia-Pacific Data-Research Center       APDRC      http… TRUE  </span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt;  4 NOAA&#39;s National Centers for Environmental Informatio… NCEI       http… TRUE  </span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt;  5 Biological and Chemical Oceanography Data Management… BCODMO     http… TRUE  </span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt;  6 European Marine Observation and Data Network (EMODne… EMODnet    http… TRUE  </span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#&gt;  7 European Marine Observation and Data Network (EMODne… EMODnet P… http… TRUE  </span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="co">#&gt;  8 Marine Institute - Ireland                            MII        http… TRUE  </span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt;  9 CoastWatch Caribbean/Gulf of Mexico Node              CSCGOM     http… TRUE  </span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#&gt; 10 NOAA IOOS Sensors ERDDAP                              IOOS-Sens… http… TRUE  </span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt; # ℹ 51 more rows</span></span></code></pre></div>
 <p>The list of <span style="color:red">ERDDAP</span> servers is based on
 the list maintained at the <em>Awesome ERDDAP</em> site compiled by the
 Irish Marine Institute.</p>
@@ -1072,7 +1072,8 @@ California Current ecosystem, and forecast how changing environmental
 conditions and management actions affect the status of these components.
 The conceptual model of the social-ecological system of the California
 Current illustrates how humans and their social systems are inextricably
-linked to these marine, coastal, and upland environments (see <a href="https://www.integratedecosystemassessment.noaa.gov/regions/california-current/projects" class="uri">https://www.integratedecosystemassessment.noaa.gov/regions/california-current/projects</a>).</p>
+linked to these marine, coastal, and upland environments (see
+(“www.integratedecosystemassessment.noaa.gov/regions/california-current/projects”).</p>
 <p>The over 300 indices developed for the CCSIEA are available through
 <code>rerddap</code>. Here an index of coho abundance in California is
 compared with the February value of an index of the strength and

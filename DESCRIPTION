@@ -5,8 +5,8 @@ Description: General purpose R client for 'ERDDAP' servers. Includes
     'datasets', and fetch 'datasets', in either 'csv' or 'netCDF' format.
     'ERDDAP' information: 
     <https://upwell.pfeg.noaa.gov/erddap/information.html>.
-Version: 1.0.3
-Date: 2023-06-29
+Version: 1.0.4
+Date: 2023-08-22
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = "aut"),
@@ -33,11 +33,11 @@ X-schema.org-keywords: earth, science, climate, precipitation,
         temperature, storm, buoy, NOAA
 X-schema.org-isPartOf: https://ropensci.org
 NeedsCompilation: no
-Packaged: 2023-06-30 15:00:18 UTC; rmendels
+Packaged: 2023-08-23 01:37:16 UTC; rmendels
 Author: Scott Chamberlain [aut],
   Ben Tupper [ctb],
   Salvador Jesús Fernández Bejarano [ctb],
   Roy Mendelssohn [cre, ctb]
 Maintainer: Roy Mendelssohn <roy.mendelssohn@noaa.gov>
 Repository: CRAN
-Date/Publication: 2023-06-30 21:30:02 UTC
+Date/Publication: 2023-08-23 03:40:04 UTC
