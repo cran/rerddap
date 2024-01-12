@@ -5,8 +5,8 @@ Description: General purpose R client for 'ERDDAP' servers. Includes
     'datasets', and fetch 'datasets', in either 'csv' or 'netCDF' format.
     'ERDDAP' information: 
     <https://upwell.pfeg.noaa.gov/erddap/information.html>.
-Version: 1.0.4
-Date: 2023-08-22
+Version: 1.1.0
+Date: 2024-1-12
 License: MIT + file LICENSE
 Authors@R: c(
     person("Scott", "Chamberlain", role = "aut"),
@@ -22,9 +22,9 @@ LazyData: true
 Depends: R (>= 4.00)
 Encoding: UTF-8
 Language: en-US
-Imports: utils, crul (>= 0.7.4), dplyr (>= 0.5.0), data.table (>=
-        1.12.0), jsonlite (>= 1.6), xml2 (>= 1.2.0), digest, ncdf4 (>=
-        1.16), tibble, hoardr (>= 0.5.2)
+Imports: crul (>= 0.7.4), dplyr (>= 0.5.0), data.table (>= 1.12.0),
+        digest, hoardr (>= 0.5.2), jsonlite (>= 1.6), lubridate,
+        methods, ncdf4 (>= 1.16), tibble, utils, xml2 (>= 1.2.0)
 Suggests: knitr, rmarkdown
 RoxygenNote: 7.2.3
 VignetteBuilder: knitr
@@ -33,11 +33,11 @@ X-schema.org-keywords: earth, science, climate, precipitation,
         temperature, storm, buoy, NOAA
 X-schema.org-isPartOf: https://ropensci.org
 NeedsCompilation: no
-Packaged: 2023-08-23 01:37:16 UTC; rmendels
+Packaged: 2024-01-12 17:21:58 UTC; rmendels
 Author: Scott Chamberlain [aut],
   Ben Tupper [ctb],
   Salvador Jesús Fernández Bejarano [ctb],
   Roy Mendelssohn [cre, ctb]
 Maintainer: Roy Mendelssohn <roy.mendelssohn@noaa.gov>
 Repository: CRAN
-Date/Publication: 2023-08-23 03:40:04 UTC
+Date/Publication: 2024-01-12 18:20:02 UTC

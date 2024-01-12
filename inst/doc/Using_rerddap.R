@@ -8,16 +8,16 @@ knitr::opts_chunk$set(
 library(rerddap)
 data("colors")
 
-## ---- eval = FALSE------------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  install.packages("rerddap")
 
-## ---- eval = FALSE------------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  remotes::install_github("ropensci/rerddap")
 
 ## -----------------------------------------------------------------------------
 library("rerddap")
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  library("akima")
 #  library("dplyr")
 #  library("ggplot2")
@@ -25,13 +25,13 @@ library("rerddap")
 #  library("ncdf4")
 #  library("plot3D")
 
-## ---- eval = FALSE------------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  ?rerddap
 
-## ---- eval = FALSE------------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  whichSST <- ed_search(query = "SST")
 
-## ---- eval = FALSE------------------------------------------------------------
+## ----eval = FALSE-------------------------------------------------------------
 #  whichSST <- ed_search(query = "SST MODIS")
 
 ## -----------------------------------------------------------------------------
@@ -40,35 +40,35 @@ servers()
 ## -----------------------------------------------------------------------------
 100*100*4*8*365
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  browse('jplMURSST41')
 #  browse('siocalcofiHydroCast')
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  info('jplMURSST41')
 #  info('siocalcofiHydroCast')
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  latitude = c(22., 51.)
 #  longitude = c(-140., -105)
 #  time = c("2017-01-01", "2017-01-02")
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  sstInfo <- info('jplMURSST41')
 #  murSST <- griddap(sstInfo, latitude = c(22., 51.), longitude = c(-140., -105), time = c("2017-01-01", "2017-01-02"), fields = 'analysed_sst')
 #  
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  murSST <- griddap(sstInfo, latitude = c(22., 51.), longitude = c(-140., -105), time = c("2017-01-01", "2017-01-02"), stride = c(1,1,5), fields = 'analysed_sst')
 #  
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  'time>=2010-01-01'
 #  'time<=2010-12-31'
 #  'scientific_name="Sardinops sagax"'
 #  
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  CPSinfo <- info('FRDCPSTrawlLHHaulCatch')
 #  sardines <- tabledap(CPSinfo, fields = c('latitude',  'longitude', 'time', 'scientific_name', 'subsample_count'), 'time>=2010-01-01', 'time<=2010-12-31', 'scientific_name="Sardinops sagax"' )
 #  
@@ -116,7 +116,7 @@ servers()
 #      coord_fixed(1.3, xlim = c(-128, -114),  ylim = c(30., 42.)) + ggtitle("Latest VIIRS 3-day SST")
 #  
 
-## ---- echo = TRUE, eval = FALSE-----------------------------------------------
+## ----echo = TRUE, eval = FALSE------------------------------------------------
 #  require("ggplot2")
 #  require("rerddap")
 #  viirsSST1 <- griddap(sstInfo, latitude = c(36., 36.),
@@ -125,7 +125,7 @@ servers()
 #  tempTime <- as.Date(viirsSST1$data$time, origin = '1970-01-01', tz = "GMT")
 #  tempFrame <- data.frame(time = tempTime, sst = viirsSST1$data$sst)
 
-## ---- echo = TRUE, eval = FALSE-----------------------------------------------
+## ----echo = TRUE, eval = FALSE------------------------------------------------
 #  ggplot(tempFrame, aes(time, sst)) +
 #    geom_line() +
 #    theme_bw() +
@@ -141,7 +141,7 @@ servers()
 #                       longitude = c(-128., -115), time = c('last','last'),
 #                       fields = 'chla')
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  mycolor <- colors$chlorophyll
 #  w <- map_data("worldHires", ylim = c(30., 42.), xlim = c(-128, -114))
 #  ggplot(data = viirsCHLA$data, aes(x = longitude, y = latitude, fill = log(chla))) +
@@ -246,7 +246,7 @@ servers()
 #      coord_fixed(1.3, xlim = xlim, ylim = ylim) + ggtitle(paste("salinity at 75 meters",ifrPSAL$data$time[1] ))
 #   myplot
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  require("rerddap")
 #  hydroInfo <- info('siocalcofiHydroCast')
 
@@ -255,9 +255,11 @@ servers()
 #  calcofi.df <- tabledap(hydroInfo, fields = c('cst_cnt',  'date', 'year', 'month', 'julian_date', 'julian_day', 'rpt_line', 'rpt_sta', 'cruz_num', 'intchl', 'intc14', 'time'), 'time>=1984-01-01T00:00:00Z', 'time<=2014-04-17T05:35:00Z')
 
 ## ----calCOFInum, eval = FALSE, echo = TRUE------------------------------------
-#  calcofi.df$cruz_num <- as.numeric(calcofi.df$cruz_num)
-#  calcofi.df$intc14 <- as.numeric(calcofi.df$intc14)
-#  calcofi.df$time <- as.Date(calcofi.df$time, origin = '1970-01-01', tz = "GMT")
+#  if (packageVersion('rerddap') < '1.1.0'){
+#      calcofi.df$cruz_num <- as.numeric(calcofi.df$cruz_num)
+#      calcofi.df$intc14 <- as.numeric(calcofi.df$intc14)
+#      calcofi.df$time <- as.Date(calcofi.df$time, origin = '1970-01-01', tz = "GMT")
+#  }
 
 ## ----calCOFIPlot, eval = FALSE,  echo = TRUE----------------------------------
 #  require("dplyr")
@@ -297,16 +299,21 @@ servers()
 #  require("rerddap")
 #  CPSinfo <- info('FRDCPSTrawlLHHaulCatch')
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  require("dplyr")
 #  require("rerddap")
 #  sardines <- tabledap(CPSinfo, fields = c('latitude',  'longitude', 'time', 'scientific_name', 'subsample_count'), 'time>=2010-01-01', 'time<=2012-01-01', 'scientific_name="Sardinops sagax"' )
+#  if (packageVersion('rerddap') < '1.1.0'){
+#      sardines$time <- as.Date(sardines$time, origin = '1970-01-01', tz = "GMT")
+#      sardines$latitude <- as.numeric(sardines$latitude)
+#      sardines$longitude <- as.numeric(sardines$longitude)
+#  }
 #  sardines$time <- as.Date(sardines$time, origin = '1970-01-01', tz = "GMT")
 #  sardines$latitude <- as.numeric(sardines$latitude)
 #  sardines$longitude <- as.numeric(sardines$longitude)
 #  sardine2010 <- filter(sardines, time < as.Date('2010-12-01'))
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  # get the dataset info
 #  sstInfo <- info('erdMWsstdmday')
 #  # get 201004 monthly sst
@@ -340,12 +347,16 @@ servers()
 #  
 #  p2 +   geom_point(data = sardine2011, aes(x = longitude, y = latitude, colour = subsample_count)) + scale_colour_gradient(space = "Lab", na.value = NA, limits = c(0,80))
 
-## ---- eval = FALSE,  echo = TRUE----------------------------------------------
+## ----eval = FALSE,  echo = TRUE-----------------------------------------------
 #  sardinops <- tabledap(CPSinfo, fields = c('longitude', 'latitude', 'time'),  'scientific_name="Sardinops sagax"')
-#  sardinops$time <- as.Date(sardinops$time, origin = '1970-01-01', tz = "GMT")
+#  if (packageVersion('rerddap') < '1.1.0') {
+#      sardinops$time <- as.Date(sardinops$time, origin = '1970-01-01', tz = "GMT")
+#      sardinops$year <- as.factor(format(sardinops$time, '%Y'))
+#      sardinops$latitude <- as.numeric(sardinops$latitude)
+#      sardinops$longitude <- as.numeric(sardinops$longitude)
+#  }
 #  sardinops$year <- as.factor(format(sardinops$time, '%Y'))
-#  sardinops$latitude <- as.numeric(sardinops$latitude)
-#  sardinops$longitude <- as.numeric(sardinops$longitude)
+#  
 
 ## ----sardinesPlot, eval = FALSE, echo = TRUE----------------------------------
 #  xlim <- c(-135, -110)
@@ -358,12 +369,14 @@ servers()
 #      coord_fixed(1.3, xlim = xlim, ylim = ylim) +
 #      ggtitle("Location of sardines by year in EPM Trawls")
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  # get location and station ID of NDBC buoys in a region
 #  BuoysInfo <- info('cwwcNDBCMet')
 #  locationBuoys <- tabledap(BuoysInfo, distinct = TRUE, fields = c("station", "longitude", "latitude"), "longitude>=-124", "longitude<=-121", "latitude>=37", "latitude<=47")
-#  locationBuoys$latitude <- as.numeric(locationBuoys$latitude)
-#  locationBuoys$longitude <- as.numeric(locationBuoys$longitude)
+#  if (packageVersion('rerddap') < '1.1.0') {
+#     locationBuoys$latitude <- as.numeric(locationBuoys$latitude)
+#     locationBuoys$longitude <- as.numeric(locationBuoys$longitude)
+#  }
 
 ## ----NDBC, eval = FALSE,  echo = TRUE-----------------------------------------
 #  xlim <- c(-130, -110)
@@ -377,10 +390,12 @@ servers()
 #     ggtitle("Location of buoys in given region")
 #  
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  buoyData <- tabledap(BuoysInfo, fields = c("time", "wspd"), 'station="46012"', 'time>=2012-01-01', 'time<=2013-01-01')
-#  buoyData$wspd <- as.numeric(buoyData$wspd)
-#  buoyData$time <- as.Date(buoyData$time, origin = '1970-01-01', tz = "GMT")
+#  if (packageVersion('rerddap') < '1.1.0') {
+#      buoyData$wspd <- as.numeric(buoyData$wspd)
+#      buoyData$time <- as.Date(buoyData$time, origin = '1970-01-01', tz = "GMT")
+#  }
 
 ## ----NDBCTS, eval = FALSE, echo = TRUE----------------------------------------
 #  ggplot(buoyData, aes(time, wspd)) +
@@ -389,13 +404,15 @@ servers()
 #    ylab("wind speed") +
 #    ggtitle("Wind Speed in 2012 from buoy 46012 ")
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  urlBase <- "https://data.ioos.us/gliders/erddap/"
 #  gliderInfo <- info("sp064-20161214T1913",  url = urlBase)
 #  glider <- tabledap(gliderInfo, fields = c("longitude", "latitude", "depth", "salinity"), 'time>=2016-12-14', 'time<=2016-12-23', url = urlBase)
-#  glider$longitude <- as.numeric(glider$longitude)
-#  glider$latitude <- as.numeric(glider$latitude)
-#  glider$depth <- as.numeric(glider$depth)
+#  if (packageVersion('rerddap') < '1.1.0') {
+#      glider$longitude <- as.numeric(glider$longitude)
+#      glider$latitude <- as.numeric(glider$latitude)
+#      glider$depth <- as.numeric(glider$depth)
+#  }
 
 ## ----glider, eval = FALSE, echo = TRUE----------------------------------------
 #  require("plot3D")
@@ -404,7 +421,7 @@ servers()
 #             xlab = "longitude", ylab = "latitude", zlab = "depth",
 #             cex = c(0.5, 1, 1.5))
 
-## ---- echo = TRUE, eval = FALSE-----------------------------------------------
+## ----echo = TRUE, eval = FALSE------------------------------------------------
 #  atnURL <- 'https://oceanview.pfeg.noaa.gov/erddap/'
 #  atnInfo <- info('gtoppAT', url = atnURL)
 #  atnData <- tabledap(atnInfo, fields = c("time", "longitude", "latitude"), 'toppID="1807001"', url = atnURL)
@@ -412,12 +429,18 @@ servers()
 #  atnData$longitude <- as.numeric(atnData$longitude)
 #  ncdcSST = array(NA_real_, dim = length(atnData$time))
 #  ncdcSSTInfo = info('ncdcOisst2Agg')
+#  time_bound <- c(as.character(atnData$time[i]), as.character(atnData$time[i]))
 #  for (i in 1:length(atnData$time)) {
-#    extract <- griddap(ncdcSSTInfo, fields = 'sst', latitude = c(atnData$latitude[i], atnData$latitude[i]), longitude = c(atnData$longitude[i], atnData$longitude[i]), time = c(atnData$time[i], atnData$time[i]))
+#    extract <- griddap(ncdcSSTInfo,
+#                       fields = 'sst',
+#                       latitude = c(atnData$latitude[i], atnData$latitude[i]),
+#                       longitude = c(atnData$longitude[i], atnData$longitude[i]),
+#                       time = time_bound
+#                       )
 #  ncdcSST[i] <- extract$data$sst
 #  }
 
-## ---- eval = FALSE,  echo = TRUE----------------------------------------------
+## ----eval = FALSE,  echo = TRUE-----------------------------------------------
 #  ylim <- c(32.5, 34)
 #  xlim <- c(-119, -116.5)
 #  mycolor <- colors$temperature
@@ -431,7 +454,7 @@ servers()
 #    coord_fixed(1.3, xlim = xlim, ylim = ylim) + ggtitle("SST Along Track")
 #  
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  urlBase <- 'https://coastwatch.pfeg.noaa.gov/erddap/'
 #  nphInfo <- info('erdNph', url = urlBase)
 #  nphData <- tabledap(nphInfo, fields = c("year", "maxSLP" ), 'month=2', 'year>=1987', url = urlBase)
@@ -439,14 +462,16 @@ servers()
 #  urlBase <- 'https://oceanview.pfeg.noaa.gov/erddap/'
 #  cohoInfo <- info('cciea_SM_CA_CO_ABND', url = urlBase)
 #  cohoData <- tabledap(cohoInfo, fields = c("abundance_anomaly", "time"),  url = urlBase)
-#  cohoData$abundance_anomaly <- as.numeric(cohoData$abundance_anomaly)
+#  if (packageVersion('rerddap') < '1.1.0') {
+#      cohoData$abundance_anomaly <- as.numeric(cohoData$abundance_anomaly)
+#  }
 #  alldata <- data.frame(coho = cohoData$abundance_anomaly[1:27], maxSLP = nphData$maxSLP, year = nphData$year)
 
-## ---- eval = FALSE, echo = TRUE-----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  ggplot(alldata) + geom_line(aes(x = year, y = coho), colour = 'blue') + theme_bw() + ggtitle("coho abundance anomaly")
 #  ggplot(alldata) + geom_line(aes(x = year, y = maxSLP), colour = 'red') + theme_bw() + ggtitle("MaxSLP")
 
-## ----  eval = FALSE, echo = TRUE----------------------------------------------
+## ----eval = FALSE, echo = TRUE------------------------------------------------
 #  ?cache_delete
 #  ?cache_delete_all
 #  ?cache_details
