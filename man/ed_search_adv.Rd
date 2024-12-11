@@ -2,7 +2,7 @@
 % Please edit documentation in R/search_adv.R
 \name{ed_search_adv}
 \alias{ed_search_adv}
-\title{Advanced search for ERDDAP tabledep or griddap datasets}
+\title{Advanced search for ERDDAP™ tabledep or griddap datasets}
 \usage{
 ed_search_adv(
   query = NULL,
@@ -70,7 +70,7 @@ If you specify something, you must include at least yyyy-MM-dd; you can
 omit Z, :ss, :mm, :HH, and T. Always use UTC (GMT/Zulu) time. Or specify
 the number of seconds since 1970-01-01T00:00:00Z.}
 
-\item{url}{A URL for an ERDDAP server. Default:
+\item{url}{A URL for an ERDDAP™ server. Default:
 https://upwell.pfeg.noaa.gov/erddap/ - See \code{\link[=eurl]{eurl()}} for
 more information}
 
@@ -78,7 +78,7 @@ more information}
 named parameters)}
 }
 \description{
-Advanced search for ERDDAP tabledep or griddap datasets
+Advanced search for ERDDAP™ tabledep or griddap datasets
 }
 \examples{
 \dontrun{

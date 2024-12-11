@@ -9,7 +9,7 @@ global_search(query, server_list, which_service)
 \arguments{
 \item{query}{(character) Search terms}
 
-\item{server_list}{(list of character) List of ERDDAP servers to search}
+\item{server_list}{(list of character) List of ERDDAP™ servers to search}
 
 \item{which_service}{(character) One of tabledep or griddap.}
 }
@@ -24,8 +24,8 @@ if urls are valid,  no match is found,  will return no match found
 else returns error message
 }
 \description{
-Search for ERDDAP tabledap or griddap datasets from a list
-of ERDDAP servers based on search terms.
+Search for ERDDAP™ tabledap or griddap datasets from a list
+of ERDDAP™ servers based on search terms.
 }
 \details{
 Uses the 'reddap' function ed_search() to search over

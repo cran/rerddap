@@ -1,9 +1,9 @@
-#' Get information on an ERDDAP dataset.
+#' Get information on an ERDDAP™ dataset.
 #'
 #' @export
 #'
 #' @param datasetid Dataset id
-#' @param url A URL for an ERDDAP server. Default:
+#' @param url A URL for an ERDDAP™ server. Default:
 #' https://upwell.pfeg.noaa.gov/erddap/ - See [eurl()] for 
 #' more information
 #' @param ... Further args passed on to [crul::verb-GET] (must be a
@@ -64,7 +64,7 @@
 #' ## all information on Haliotis_corrugata_Mean_Density
 #' out$alldata$Haliotis_corrugata_Mean_Density
 #'
-#' # use a different ERDDAP server
+#' # use a different ERDDAP™ server
 #' ## Marine Institute (Ireland)
 #' info("IMI_CONN_2D", url = "http://erddap.marine.ie/erddap/")
 #' }

@@ -1,4 +1,4 @@
-#' Advanced search for ERDDAP tabledep or griddap datasets
+#' Advanced search for ERDDAP™ tabledep or griddap datasets
 #'
 #' @export
 #'
@@ -31,7 +31,7 @@
 #' If you specify something, you must include at least yyyy-MM-dd; you can
 #' omit Z, :ss, :mm, :HH, and T. Always use UTC (GMT/Zulu) time. Or specify
 #' the number of seconds since 1970-01-01T00:00:00Z.
-#' @param url A URL for an ERDDAP server. Default:
+#' @param url A URL for an ERDDAP™ server. Default:
 #' https://upwell.pfeg.noaa.gov/erddap/ - See [eurl()] for 
 #' more information
 #' @param ... Curl options passed on to [crul::verb-GET] (must be

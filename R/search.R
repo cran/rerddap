@@ -1,4 +1,4 @@
-#' Search for ERDDAP tabledep or griddap datasets
+#' Search for ERDDAP™ tabledep or griddap datasets
 #'
 #' @export
 #'
@@ -6,7 +6,7 @@
 #' @param page (integer) Page number
 #' @param page_size (integer) Results per page
 #' @param which (character) One of tabledep or griddap.
-#' @param url A URL for an ERDDAP server. Default:
+#' @param url A URL for an ERDDAP™ server. Default:
 #' https://upwell.pfeg.noaa.gov/erddap/ - See [eurl()] for 
 #' more information
 #' @param ... Curl options passed on to [crul::verb-GET] (must be
@@ -22,7 +22,7 @@
 #' ed_datasets('table')
 #' ed_datasets('grid')
 #'
-#' # use a different ERDDAP server
+#' # use a different ERDDAP™ server
 #' ## Marine Institute (Ireland)
 #' ed_search("temperature", url = "http://erddap.marine.ie/erddap/")
 #' }

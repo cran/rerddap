@@ -1,8 +1,8 @@
 #' @title global_search
-#' @description Search for ERDDAP tabledap or griddap datasets from a list
-#' of ERDDAP servers based on search terms.
+#' @description Search for ERDDAP™ tabledap or griddap datasets from a list
+#' of ERDDAP™ servers based on search terms.
 #' @param query (character) Search terms
-#' @param server_list (list of character) List of ERDDAP servers to search
+#' @param server_list (list of character) List of ERDDAP™ servers to search
 #' @param which_service (character) One of tabledep or griddap.
 #' @return If successful a dataframe wih columns:
 #'  \itemize{

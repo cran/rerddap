@@ -3,7 +3,7 @@
 #' @export
 #' @param county character; A county name.
 #' @param code numeric; A FIPS code.
-#' @param url A URL for an ERDDAP server. Default:
+#' @param url A URL for an ERDDAP™ server. Default:
 #' https://upwell.pfeg.noaa.gov/erddap/ - See [eurl()] for 
 #' more information
 #' @param ... Curl options passed on to [crul::verb-GET]

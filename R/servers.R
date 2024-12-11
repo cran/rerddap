@@ -1,11 +1,11 @@
-#' ERDDAP server URLS and other info
+#' ERDDAP™ server URLS and other info
 #'
 #' @export
 #' @param ... curl options passed on to [crul::verb-GET]
 #' @return data.frame with 3 columns:
 #' 
-#' - name (character): ERDDAP name
-#' - url (character): ERDDAP url
+#' - name (character): ERDDAP™ name
+#' - url (character): ERDDAP™ url
 #' - public (logical): whether it's public or not
 #' 
 #' @examples \dontrun{

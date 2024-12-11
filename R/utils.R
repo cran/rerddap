@@ -1,4 +1,4 @@
-#' Options for saving ERDDAP datasets.
+#' Options for saving ERDDAP™ datasets.
 #'
 #' @export
 #' @param path Path to store files in. A directory, not a file.
