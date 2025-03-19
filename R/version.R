@@ -14,7 +14,16 @@
 version <- function(url = eurl(), ...){
   cli <- crul::HttpClient$new(url = file.path(pu(url), 'version'), 
     opts = list(...))
-  res <- cli$get()
+  # res <- cli$get()
+  response <- tryCatch(
+    {
+      res <- cli$get()  # Attempt to fetch
+    },
+    error = function(e) {
+      message("Curl request failed to get version: ", e$message)
+      quit(save = "no", status = 1)  # Gracefully exit R session
+    }
+  )
   res$raise_for_status()
   sub("\n", "", res$parse("UTF-8"))
 }

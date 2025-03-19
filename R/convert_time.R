@@ -37,7 +37,16 @@ convert_time <- function(n = NULL, isoTime = NULL,
     args <- rc(list(n = n, isoTime = isoTime, units = units))
     cli <- crul::HttpClient$new(url = file.path(pu(url), 'convert/time.txt'), 
       opts = list(...))
-    res <- cli$get(query = args)
+    # res <- cli$get(query = args)
+    response <- tryCatch(
+      {
+        res <- cli$get(query = args)  # Attempt to fetch
+      },
+      error = function(e) {
+        message("Curl request failed to convert time: ", e$message)
+        quit(save = "no", status = 1)  # Gracefully exit R session
+      }
+    )
     res$raise_for_status()
     res$parse("UTF-8")
   }

@@ -123,7 +123,7 @@ servers()
 # require("ggplot2")
 # require("mapdata")
 # require("rerddap")
-# sstInfo <- info('erdVHsstaWS3day')
+# sstInfo <- info('erdVHsstaWS3day', url = "https://coastwatch.pfeg.noaa.gov/erddap/")
 # # get latest 3-day composite sst
 # viirsSST <- griddap(sstInfo, latitude = c(41., 31.), longitude = c(-128., -115), time = c('last','last'), fields = 'sst')
 # # remap latitiudes and longitudes to even grid
@@ -241,12 +241,12 @@ servers()
 ## ----IFREMER, eval = FALSE, echo = TRUE---------------------------------------
 # require("rerddap")
 # urlBase <- "https://www.ifremer.fr/erddap/"
-# parameter <- "PSAL"
-# ifrTimes <- c("2019-05-15", "2019-05-15")
+# parameter <- "Salinity"
+# ifrTimes <- c("2010-05-16", "2010-05-16")
 # ifrLats <- c(30., 50.)
 # ifrLons <- c(-140., -110.)
 # ifrDepth <- c(75., 75.)
-# dataInfo <- rerddap::info("CORIOLIS_GLOBAL_NRTOA_OBS_TIME_SERIE_PSAL", url = urlBase)
+# dataInfo <- rerddap::info("SDC_GLO_CLIM_TS_V2_2", url = urlBase)
 # ifrPSAL <- griddap(dataInfo, longitude = ifrLons, latitude = ifrLats, time = ifrTimes, depth = ifrDepth,  fields = parameter, url = urlBase)
 
 ## ----ifrPSALplot, eval = FALSE, echo = TRUE-----------------------------------
@@ -257,19 +257,9 @@ servers()
 #  require("mapdata")
 #   xlim <- c(-140, -110)
 #   ylim <- c(30, 51)
-# ## ggplot2 has trouble with unequal y's
 #   my.col <- colors$salinity
-#   tempData1 <- ifrPSAL$data$PSAL
-#   tempData <- array(tempData1 , 61 * 54)
-#   tempFrame <- data.frame(x = ifrPSAL$data$longitude, y = ifrPSAL$data$latitude)
-#   tempFrame$temp <- tempData
-#   tempFrame1 <- dplyr::filter(tempFrame, !is.nan(temp))
-#   myinterp <- akima::interp(tempFrame1$x, tempFrame1$y, tempFrame1$temp, xo = seq(min(tempFrame1$x), max(tempFrame1$x), length = 61), yo = seq(min(tempFrame1$y), max(tempFrame1$y), length = 54))
-#   myinterp1 <- expand.grid(x = myinterp$x, y = myinterp$y)
-#   myinterp1$temp <- array(myinterp$z, 61 * 54)
-#   w <- map_data("worldHires", ylim = ylim, xlim = xlim)
-#  myplot <- ggplot() +
-#     geom_raster(data = myinterp1, aes(x = x, y = y, fill = temp), interpolate = FALSE) +
+#   myplot <- ggplot() +
+#     geom_raster(data = ifrPSAL$data, aes(x = longitude, y = latitude, fill = Salinity), interpolate = FALSE) +
 #     geom_polygon(data = w, aes(x = long, y = lat, group = group), fill = "grey80") +
 #     theme_bw() + scale_fill_gradientn(colours = my.col, na.value = NA, limits = c(32, 35), name = "salinity") +
 #     ylab("latitude") + xlab("longitude") +
@@ -318,26 +308,9 @@ servers()
 # ggplot(yearlyAnom, aes(year, ppYrAnom)) + geom_line() +
 #   theme_bw() + ggtitle('yearly pp anom')
 
-## ----parquet, eval = FALSE, echo = TRUE---------------------------------------
+## ----calCOFI-parquet, eval = FALSE, echo = TRUE-------------------------------
 # require("rerddap")
-# hydroInfo <- info('siocalcofiHydroCast')
 # calcofi.df <- tabledap(hydroInfo, fields = c('cst_cnt',  'date', 'year', 'month', 'julian_date', 'julian_day', 'rpt_line', 'rpt_sta', 'cruz_num', 'intchl', 'intc14', 'time'), 'time>=1984-01-01T00:00:00Z', 'time<=2014-04-17T05:35:00Z', fmt = 'parquet')
-# head(calcofi.df)
-# <ERDDAP tabledap> siocalcofiHydroCast
-# Path: [/var/folders/46/jyz1mm5x5bvbf59b5g8f7f580000gn/T//Rtmpo6E8y5/R/rerddap/50ff5f9fb5f56f480ff2f6ea034df8ef.parquet]
-# Last updated: [2024-12-10 11:04:01.948088]
-# File size:    [0.24 mb]
-# # A tibble: 6 × 12
-# cst_cnt date        year month julian_date julian_day rpt_line rpt_sta cruz_num intchl intc14
-# <int> <chr>      <int> <int>       <int>      <int>    <dbl>   <dbl> <chr>     <dbl>  <dbl>
-#   1   22523 01/05/1984  1984     1       30686          5       90      35 8401       30.3    NA
-# 2   22524 01/05/1984  1984     1       30686          5       90      30 8401       27.9    NA
-# 3   22525 01/05/1984  1984     1       30686          5       90      28 8401       29.9    NA
-# 4   22526 01/05/1984  1984     1       30686          5       90      32 8401       39.3   385.
-# 5   22527 01/05/1984  1984     1       30686          5       90      37 8401       36.7    NA
-# 6   22528 01/06/1984  1984     1       30687          6       90      53 8401       30.3    NA
-# # ℹ 1 more variable: time <dttm>
-# 
 
 ## ----CPS Query, eval = FALSE, echo = TRUE-------------------------------------
 # require("rerddap")
@@ -480,7 +453,7 @@ servers()
 # atnData$longitude <- as.numeric(atnData$longitude)
 # ncdcSST = array(NA_real_, dim = length(atnData$time))
 # ncdcSSTInfo = info('ncdcOisst2Agg')
-# time_bound <- c(as.character(atnData$time[i]), as.character(atnData$time[i]))
+# time_bound <- c(as.character(atnData$time[1]), as.character(atnData$time[66]))
 # for (i in 1:length(atnData$time)) {
 #   extract <- griddap(ncdcSSTInfo,
 #                      fields = 'sst',
