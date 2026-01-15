@@ -468,7 +468,7 @@ servers, designed to work with the function <code>servers()</code></p>
 <h2>Information</h2>
 <p>Then you can get information on a single dataset</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">info</span>(<span class="st">&#39;erdCalCOFIlrvsiz&#39;</span>)</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co">#&gt; &lt;ERDDAP info&gt; erdCalCOFIlrvsiz </span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co">#&gt; &lt;ERDDAP™ info&gt; erdCalCOFIlrvsiz </span></span>
 <span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="co">#&gt;  Base URL: https://upwell.pfeg.noaa.gov/erddap </span></span>
 <span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co">#&gt;  Dataset Type: tabledap </span></span>
 <span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="co">#&gt;  Variables:  </span></span>
@@ -503,7 +503,7 @@ function</p>
 <span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>  <span class="at">latitude =</span> <span class="fu">c</span>(<span class="dv">14</span>, <span class="dv">15</span>),</span>
 <span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a>  <span class="at">longitude =</span> <span class="fu">c</span>(<span class="dv">125</span>, <span class="dv">126</span>)</span>
 <span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a>))</span>
-<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co">#&gt; &lt;ERDDAP griddap&gt; erdMBchla1day</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co">#&gt; &lt;ERDDAP™ griddap&gt; erdMBchla1day</span></span>
 <span id="cb9-7"><a href="#cb9-7" tabindex="-1"></a><span class="co">#&gt;    Path: [/var/folders/xw/mcmsdzzx4mgbttplylgs7ysh0000gp/T//RtmpoME6FV/R/rerddap/4d844aa48552049c3717ac94ced5f9b8.nc]</span></span>
 <span id="cb9-8"><a href="#cb9-8" tabindex="-1"></a><span class="co">#&gt;    Last updated: [2023-06-29 13:18:53.945082]</span></span>
 <span id="cb9-9"><a href="#cb9-9" tabindex="-1"></a><span class="co">#&gt;    File size:    [0.03 mb]</span></span>
@@ -561,7 +561,7 @@ further. Get the summary</p>
 <div id="tabledap-tabular-data" class="section level2">
 <h2>tabledap (tabular) data</h2>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a>(out <span class="ot">&lt;-</span> <span class="fu">info</span>(<span class="st">&#39;erdCalCOFIlrvsiz&#39;</span>))</span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co">#&gt; &lt;ERDDAP info&gt; erdCalCOFIlrvsiz </span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="co">#&gt; &lt;ERDDAP™ info&gt; erdCalCOFIlrvsiz </span></span>
 <span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="co">#&gt;  Base URL: https://upwell.pfeg.noaa.gov/erddap </span></span>
 <span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="co">#&gt;  Dataset Type: tabledap </span></span>
 <span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="co">#&gt;  Variables:  </span></span>
@@ -574,7 +574,7 @@ further. Get the summary</p>
 <span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a>...</span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a>(dat <span class="ot">&lt;-</span> <span class="fu">tabledap</span>(<span class="st">&#39;erdCalCOFIlrvsiz&#39;</span>, <span class="at">fields=</span><span class="fu">c</span>(<span class="st">&#39;latitude&#39;</span>,<span class="st">&#39;longitude&#39;</span>,<span class="st">&#39;larvae_size&#39;</span>,</span>
 <span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a>  <span class="st">&#39;scientific_name&#39;</span>), <span class="st">&#39;time&gt;=2011-01-01&#39;</span>, <span class="st">&#39;time&lt;=2011-12-31&#39;</span>))</span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co">#&gt; &lt;ERDDAP tabledap&gt; erdCalCOFIlrvsiz</span></span>
+<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="co">#&gt; &lt;ERDDAP™ tabledap&gt; erdCalCOFIlrvsiz</span></span>
 <span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="co">#&gt;    Path: [/var/folders/xw/mcmsdzzx4mgbttplylgs7ysh0000gp/T//RtmpoME6FV/R/rerddap/db7389db5b5b0ed9c426d5c13bc43d18.csv]</span></span>
 <span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="co">#&gt;    Last updated: [2023-06-29 13:18:57.579066]</span></span>
 <span id="cb14-6"><a href="#cb14-6" tabindex="-1"></a><span class="co">#&gt;    File size:    [0.05 mb]</span></span>

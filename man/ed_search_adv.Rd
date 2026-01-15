@@ -56,7 +56,7 @@ timeseries, timeseriesprofile, trajectory, trajectoryprofile}
 
 \item{minLon, maxLon}{(numeric) Minimum and maximum longitude. Some datasets
 have longitude values within -180 to 180, others use 0 to 360. If you
-specify min and max Longitude within -180 to 180 (or 0 to 360), ERDDAP will
+specify min and max Longitude within -180 to 180 (or 0 to 360), ERDDAP™ will
 only find datasets that match the values you specify. Consider doing one
 search: longitude -180 to 360, or two searches: longitude -180 to 180,
 and 0 to 360.}

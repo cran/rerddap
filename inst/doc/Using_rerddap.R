@@ -87,7 +87,7 @@ servers()
 #                          )
 # head(oncorhynchus)
 # 
-# <ERDDAP tabledap> FRDCPSTrawlLHHaulCatch
+# <ERDDAP™ tabledap> FRDCPSTrawlLHHaulCatch
 #    Path: [/var/folders/46/jyz1mm5x5bvbf59b5g8f7f580000gn/T//RtmpLpXHMI/R/rerddap/0ce4939b104016aafebee121efeeba00.csv]
 #    Last updated: [2024-10-29 11:14:10.975094]
 #    File size:    [0.02 mb]
@@ -494,6 +494,33 @@ servers()
 ## ----eval = FALSE, echo = TRUE------------------------------------------------
 # ggplot(alldata) + geom_line(aes(x = year, y = coho), colour = 'blue') + theme_bw() + ggtitle("coho abundance anomaly")
 # ggplot(alldata) + geom_line(aes(x = year, y = maxSLP), colour = 'red') + theme_bw() + ggtitle("MaxSLP")
+
+## ----echo = TRUE, eval = FALSE------------------------------------------------
+# 
+# bbox_set <- function(plotobj, landmask = TRUE, xlim = NULL, ylim = NULL, interactive = FALSE)
+# 
+
+## ----echo = TRUE, eval = FALSE------------------------------------------------
+# library(plotly)
+# 
+# myURL <- "https://coastwatch.pfeg.noaa.gov/erddap/"
+# 
+# sstInfo <- rerddap::info('erdVHsstaWS3day', url = myURL)
+# # get latest 3-day composite sst
+# viirsSST <- rerddap::griddap(sstInfo,
+#                              latitude = c(41., 31.),
+#                              longitude = c(-128., -115),
+#                              time = c('last','last'),
+#                              fields = 'sst')
+# 
+# w <- map("worldHires", xlim = c(-140., -114), ylim = c(30., 42.), fill = TRUE, plot = FALSE)
+# my_plot <- plotdap::add_griddap(plotdap::plotdap(mapData = w), viirsSST, ~sst, fill = "thermal" )
+# 
+# my_plot1 <- plotdap::bbox_set(my_plot, xlim = c(-128., -115), ylim = c(31, 41.), interactive = TRUE)
+# 
+# # must have '"tooltip = "text"' to work properly.
+# plotly::ggplotly(my_plot1, tooltip = "text")
+# 
 
 ## ----eval = FALSE, echo = TRUE------------------------------------------------
 # ?cache_delete

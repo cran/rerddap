@@ -35,7 +35,7 @@ ed_search <- function(query, page=NULL, page_size=NULL, which='griddap',
   check_arg(page_size, "numeric")
   which <- match.arg(which, c("tabledap","griddap"), FALSE)
   args <- rc(list(searchFor = query, page = page, itemsPerPage = page_size))
-  json <- erdddap_GET(paste0(url, 'search/index.json'), args, ...)
+  json <- erddap_GET(paste0(url, 'search/index.json'), args, ...)
   colnames <- vapply(
     tolower(json$table$columnNames), function(z) gsub("\\s", "_", z),
     "", USE.NAMES = FALSE)
@@ -66,7 +66,7 @@ print.ed_search <- function(x, ...){
 ed_datasets <- function(which = 'tabledap', url = eurl()){
   which <- match.arg(which, c("tabledap","griddap"), FALSE)
   url <- sprintf('%s%s/index.json', url, which)
-  out <- erdddap_GET(url, list(page = 1, itemsPerPage = 10000L))
+  out <- erddap_GET(url, list(page = 1, itemsPerPage = 10000L))
   nms <- out$table$columnNames
   lists <- lapply(out$table$rows, stats::setNames, nm = nms)
   tibble::as_tibble(rbindlist(lapply(lists, data.frame,

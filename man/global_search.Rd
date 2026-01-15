@@ -17,8 +17,8 @@ global_search(query, server_list, which_service)
 If successful a dataframe wih columns:
 \itemize{
 \item title - the dataset title
-\item dataset_id - the datasetid on that ERDDAP server
-\item url - base url of dataset ERDDAP server
+\item dataset_id - the datasetid on that ERDDAP™ server
+\item url - base url of dataset ERDDAP™ server
 }
 if urls are valid,  no match is found,  will return no match found
 else returns error message
@@ -39,7 +39,7 @@ the list of servers
 # e_servers <- e_servers[c(1, 40)]
 # to meet CRAN time limits will only search 1 place
 e_servers <- "https://coastwatch.pfeg.noaa.gov/erddap/"
-test_query <- 'NOAA/NCDC Blended Monthly'
+test_query <- 'C-HARM v1 2-Day Forecast'
 query_results <- global_search(test_query, e_servers, "griddap")
 }
 \seealso{

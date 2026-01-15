@@ -22,7 +22,7 @@
 #' and 90
 #' @param minLon,maxLon (numeric) Minimum and maximum longitude. Some datasets
 #' have longitude values within -180 to 180, others use 0 to 360. If you
-#' specify min and max Longitude within -180 to 180 (or 0 to 360), ERDDAP will
+#' specify min and max Longitude within -180 to 180 (or 0 to 360), ERDDAP™ will
 #' only find datasets that match the values you specify. Consider doing one
 #' search: longitude -180 to 360, or two searches: longitude -180 to 180,
 #' and 0 to 360.
@@ -75,7 +75,7 @@ ed_search_adv <- function(query = NULL, page = 1, page_size = 1000,
     standard_name = standard_name,
     variableName = variableName, maxLat = maxLat, minLon = minLon,
     maxLon = maxLon, minLat = minLat, minTime = minTime, maxTime = maxTime))
-  json <- erdddap_GET(paste0(url, 'search/advanced.json'), args, ...)
+  json <- erddap_GET(paste0(url, 'search/advanced.json'), args, ...)
   colnames <- vapply(
     tolower(json$table$columnNames), function(z) gsub("\\s", "_", z), "",
     USE.NAMES = FALSE

@@ -33,7 +33,7 @@
 #' script uses either "last" in [griddap()] or "now" in [tabledap()] as these 
 #' will return different values as time elapses and data are added to the 
 #' datasets.  While it is desirable to have ERDDAP™ purely idempotent,  the 
-#' "last" and "now" constructs are very helpful for people using ERDDAP 
+#' "last" and "now" constructs are very helpful for people using ERDDAP™ 
 #' in dashboards, webpages, regular input to models and the like, and the 
 #' benefits far outweigh the problems.  However, if you are using either "last" 
 #' or "now" in an \pkg{rerddap} based script, you want to be very careful to 
