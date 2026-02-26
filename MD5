@@ -1,7 +1,7 @@
-0f75bb1ff91f02e5789a3b9da7647fa0 *DESCRIPTION
+7950fdece241d300cf24885f99074fe9 *DESCRIPTION
 e34152a5351f580b172ee7093ca84124 *LICENSE
 dd738299ed133c1c7caf213c3c9124f9 *NAMESPACE
-f6ef0dd29c0952f5946eb06b40078a38 *NEWS.md
+354f982a43b20246946b939561eb92f4 *NEWS.md
 5a1c580b8ae08789c92a9361b7763dd0 *R/browse.R
 672ea2e291b9a727228637bd0ad063cb *R/cache_delete.R
 c5660e975697e82fb2af1604b15b55a4 *R/cache_details.R
@@ -26,7 +26,7 @@ edd1390c047b61f6b2c4960adec68a68 *R/servers.R
 18eb3759caca448e42e88b4d4113aa9a *R/table.R
 22c761e69ac9185ad43f9579503d3c1d *R/utils.R
 f33c374e751bf8bf59b5dd31d1c0b2f5 *R/version.R
-ffbdbf0e8b9144cdd7458e7f67dec25d *R/zzz.r
+6cd2ae92809b76814858240ac5bdd7c8 *R/zzz.r
 5210475abb54d9a023672e7894053259 *build/vignette.rds
 56b45c3d2f92e9bb4d33da23693432b5 *data/colors.rda
 b9f2aa10946e15b3e3abe29b9de5fa6a *data/institutions.rda
@@ -37,7 +37,7 @@ f7060cf5fe5f002e71cbab98422e42ae *data/standardnames.rda
 42b22dfda8ba4097645fc8cfab21695a *data/variablenames.rda
 703f26a6724f22b19ab9be55aba196c9 *inst/doc/Using_rerddap.R
 1509db40f213961b9ccf387f7d9ea32f *inst/doc/Using_rerddap.Rmd
-3b9032278dabb808f7f73838e2ade4e6 *inst/doc/Using_rerddap.html
+c824c5d8454a1b3e40f4d04850ccdbac *inst/doc/Using_rerddap.html
 c74d22b720804d095e95e083d1449164 *inst/doc/rerddap.Rmd
 123fb5b82b753f959c7dec2d76e85930 *inst/doc/rerddap.html
 ffb97db147184664c7141d23df510a87 *inst/extdata/MWsstd1day.nc
