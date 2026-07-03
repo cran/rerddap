@@ -23,7 +23,6 @@ data("colors")
 library("rerddap")
 
 ## ----eval = FALSE, echo = TRUE------------------------------------------------
-# library("akima")
 # library("dplyr")
 # library("ggplot2")
 # library("mapdata")
@@ -42,9 +41,6 @@ library("rerddap")
 ## -----------------------------------------------------------------------------
 servers()
 
-## -----------------------------------------------------------------------------
-100*100*4*8*365
-
 ## ----eval = FALSE, echo = TRUE------------------------------------------------
 # browse('jplMURSST41')
 # browse('siocalcofiHydroCast')
@@ -52,6 +48,36 @@ servers()
 ## ----eval = FALSE, echo = TRUE------------------------------------------------
 # info('jplMURSST41')
 # info('siocalcofiHydroCast')
+
+## -----------------------------------------------------------------------------
+100*100*4*8*365
+
+## ----eval = FALSE, echo = TRUE------------------------------------------------
+# myURL <- "https://coastwatch.pfeg.noaa.gov/erddap/"
+# info <- rerddap::info("erdMH1chla8day", url = myURL)
+# estimate_griddap_size(info,
+#   latitude  = c(30, 50),
+#   longitude = c(-140, -110),
+#   time      = c("2020-01-01", "2020-12-31")
+#   )
+
+## ----eval = FALSE, echo = TRUE------------------------------------------------
+# === griddap request size estimate ===
+#   Dataset  : erdMH1chla8day
+#   All dims : time, latitude, longitude
+# 
+#   Dimension                  n_pts     strided  spacing / source
+# -----------------------------------------------------------------
+#   time                          46          46  690032.432432432 s  [nValues / actual_range]
+#   latitude                     481         481  0.0416666658948831  [NC_GLOBAL::geospatial_lat_resolution]
+#   longitude                    720         720  0.0416666743836092  [NC_GLOBAL::geospatial_lon_resolution]
+# -----------------------------------------------------------------
+#   Total cells (constrained) : 15,930,720
+# 
+#   Variable                        dtype       size
+#   chlorophyll                     float       60.8 MB
+# -----------------------------------------------------------------
+#   Estimated size (NetCDF3, no compression) : 60.8 MB
 
 ## ----eval = FALSE, echo = TRUE------------------------------------------------
 # latitude = c(22., 51.)
@@ -64,7 +90,7 @@ servers()
 # 
 
 ## ----eval = FALSE, echo = TRUE------------------------------------------------
-# murSST <- griddap(sstInfo, latitude = c(22., 51.), longitude = c(-140., -105), time = c("2017-01-01", "2017-01-02"), stride = c(1,1,5), fields = 'analysed_sst')
+# murSST <- griddap(sstInfo, latitude = c(22., 51.), longitude = c(-140., -105), time = c("2017-01-01", "2017-01-02"), stride = c(1, 1, 5), fields = 'analysed_sst')
 # 
 
 ## ----eval = FALSE, echo = TRUE------------------------------------------------
@@ -251,13 +277,12 @@ servers()
 
 ## ----ifrPSALplot, eval = FALSE, echo = TRUE-----------------------------------
 # ## ggplot2 has trouble with unequal y's
-#  require("akima")
-#  require("dplyr")
 #  require("ggplot2")
 #  require("mapdata")
 #   xlim <- c(-140, -110)
 #   ylim <- c(30, 51)
 #   my.col <- colors$salinity
+#   w <- map_data("worldHires", ylim = ylim, xlim = xlim)
 #   myplot <- ggplot() +
 #     geom_raster(data = ifrPSAL$data, aes(x = longitude, y = latitude, fill = Salinity), interpolate = FALSE) +
 #     geom_polygon(data = w, aes(x = long, y = lat, group = group), fill = "grey80") +
@@ -521,6 +546,10 @@ servers()
 # # must have '"tooltip = "text"' to work properly.
 # plotly::ggplotly(my_plot1, tooltip = "text")
 # 
+
+## ----echo = TRUE, eval = FALSE------------------------------------------------
+# r <- plotdap:::get_raster(viirsSST, ~sst)
+# r <- plotdap:::latlon_adjust(r)
 
 ## ----eval = FALSE, echo = TRUE------------------------------------------------
 # ?cache_delete
