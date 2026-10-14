@@ -150,8 +150,7 @@ servers()
 # require("mapdata")
 # require("rerddap")
 # sstInfo <- info('erdVHsstaWS3day', url = "https://coastwatch.pfeg.noaa.gov/erddap/")
-# # get latest 3-day composite sst
-# viirsSST <- griddap(sstInfo, latitude = c(41., 31.), longitude = c(-128., -115), time = c('last','last'), fields = 'sst')
+# viirsSST <- griddap(sstInfo, latitude = c(41., 31.), longitude = c(-128., -115), time = c('2026-03-18','2026-03-18'), fields = 'sst')
 # # remap latitiudes and longitudes to even grid
 # myLats <- unique(viirsSST$data$latitude)
 # myLons <- unique(viirsSST$data$longitude)
@@ -210,7 +209,8 @@ servers()
 
 ## ----eval = FALSE, echo = TRUE------------------------------------------------
 # require("rerddap")
-# dataInfo <- rerddap::info('hawaii_d90f_20ee_c4cb')
+# myURL <- 'https://coastwatch.pfeg.noaa.gov/erddap'
+# dataInfo <- rerddap::info('erdSoda331oceanmday')
 # xpos <- c(135.25, 240.25)
 # ypos <- c(20.25, 60.25)
 # zpos <- c(70.02, 70.02)
@@ -440,14 +440,14 @@ servers()
 # 
 
 ## ----eval = FALSE, echo = TRUE------------------------------------------------
-# buoyData <- tabledap(BuoysInfo, fields = c("time", "wspd"), 'station="46012"', 'time>=2012-01-01', 'time<=2013-01-01')
+# buoyData <- tabledap(BuoysInfo, fields = c("time", "WSPD"), 'station="46012"', 'time>=2012-01-01', 'time<=2013-01-01')
 # if (packageVersion('rerddap') < '1.1.0') {
 #     buoyData$wspd <- as.numeric(buoyData$wspd)
 #     buoyData$time <- as.Date(buoyData$time, origin = '1970-01-01', tz = "GMT")
 # }
 
 ## ----NDBCTS, eval = FALSE, echo = TRUE----------------------------------------
-# ggplot(buoyData, aes(time, wspd)) +
+# ggplot(buoyData, aes(time, WSPD)) +
 #   geom_line() +
 #   theme_bw() +
 #   ylab("wind speed") +
@@ -509,15 +509,15 @@ servers()
 # nphData <- tabledap(nphInfo, fields = c("year", "maxSLP" ), 'month=2', 'year>=1987', url = urlBase)
 # nphData$maxSLP <- as.numeric(nphData$maxSLP)
 # urlBase <- 'https://oceanview.pfeg.noaa.gov/erddap/'
-# cohoInfo <- info('cciea_SM_CA_CO_ABND', url = urlBase)
-# cohoData <- tabledap(cohoInfo, fields = c("abundance_anomaly", "time"),  url = urlBase)
+# biomassInfo <- info('cciea_EI_FBN', url = urlBase)
+# biomassData <- tabledap(biomassInfo, fields = c("mean_density", "time"),  url = urlBase)
 # if (packageVersion('rerddap') < '1.1.0') {
-#     cohoData$abundance_anomaly <- as.numeric(cohoData$abundance_anomaly)
+#     biomassData$mean_density <- as.numeric(biomassData$mean_density)
 # }
-# alldata <- data.frame(coho = cohoData$abundance_anomaly[1:27], maxSLP = nphData$maxSLP, year = nphData$year)
+# alldata <- data.frame(biomass = biomassData$mean_density[1:15], maxSLP = nphData$maxSLP[13:27], year = nphData$year[13:27])
 
 ## ----eval = FALSE, echo = TRUE------------------------------------------------
-# ggplot(alldata) + geom_line(aes(x = year, y = coho), colour = 'blue') + theme_bw() + ggtitle("coho abundance anomaly")
+# ggplot(alldata) + geom_line(aes(x = year, y = biomass), colour = 'blue') + theme_bw() + ggtitle("biomass mean density")
 # ggplot(alldata) + geom_line(aes(x = year, y = maxSLP), colour = 'red') + theme_bw() + ggtitle("MaxSLP")
 
 ## ----echo = TRUE, eval = FALSE------------------------------------------------
@@ -535,7 +535,7 @@ servers()
 # viirsSST <- rerddap::griddap(sstInfo,
 #                              latitude = c(41., 31.),
 #                              longitude = c(-128., -115),
-#                              time = c('last','last'),
+#                              time = c('2026-03-18','2026-03-18'),
 #                              fields = 'sst')
 # 
 # w <- map("worldHires", xlim = c(-140., -114), ylim = c(30., 42.), fill = TRUE, plot = FALSE)
